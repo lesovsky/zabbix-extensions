@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-05-13T09:59:02Z</date>
+    <date>2013-05-13T10:28:49Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -69,7 +69,7 @@
                     <snmp_oid/>
                     <key>redis[blocked_clients]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -108,7 +108,7 @@
                     <snmp_oid/>
                     <key>redis[rdb_changes_since_last_save]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -147,7 +147,7 @@
                     <snmp_oid/>
                     <key>redis[used_cpu_sys_children]</key>
                     <delay>60</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -186,7 +186,7 @@
                     <snmp_oid/>
                     <key>redis[used_cpu_user_children]</key>
                     <delay>60</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -224,8 +224,8 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>redis[total_commands_processed]</key>
-                    <delay>120</delay>
-                    <history>30</history>
+                    <delay>60</delay>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -236,7 +236,7 @@
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
                     <snmpv3_authpassphrase/>
                     <snmpv3_privpassphrase/>
-                    <formula>0</formula>
+                    <formula>1</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -264,7 +264,7 @@
                     <snmp_oid/>
                     <key>redis[connected_clients]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -303,7 +303,7 @@
                     <snmp_oid/>
                     <key>redis[connected_slaves]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -342,7 +342,7 @@
                     <snmp_oid/>
                     <key>redis[total_connections_received]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -353,7 +353,7 @@
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
                     <snmpv3_authpassphrase/>
                     <snmpv3_privpassphrase/>
-                    <formula>0</formula>
+                    <formula>1</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -381,7 +381,7 @@
                     <snmp_oid/>
                     <key>redis[mem_fragmentation_ratio]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -420,7 +420,7 @@
                     <snmp_oid/>
                     <key>redis[evicted_keys]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -431,7 +431,7 @@
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
                     <snmpv3_authpassphrase/>
                     <snmpv3_privpassphrase/>
-                    <formula>0</formula>
+                    <formula>1</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -459,7 +459,7 @@
                     <snmp_oid/>
                     <key>redis[expired_keys]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -498,7 +498,7 @@
                     <snmp_oid/>
                     <key>redis[keyspace_hits]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -537,7 +537,7 @@
                     <snmp_oid/>
                     <key>redis.keys</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -576,7 +576,7 @@
                     <snmp_oid/>
                     <key>redis[keyspace_misses]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -693,7 +693,7 @@
                     <snmp_oid/>
                     <key>redis[used_cpu_sys]</key>
                     <delay>60</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -732,7 +732,7 @@
                     <snmp_oid/>
                     <key>redis[used_cpu_user]</key>
                     <delay>60</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -771,7 +771,7 @@
                     <snmp_oid/>
                     <key>redis[used_memory]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -810,7 +810,7 @@
                     <snmp_oid/>
                     <key>redis[used_memory_rss]</key>
                     <delay>120</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
