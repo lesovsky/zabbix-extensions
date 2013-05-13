@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-05-13T07:46:40Z</date>
+    <date>2013-05-13T09:30:26Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -2561,6 +2561,16 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <url/>
             <status>0</status>
             <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Linux-Default-Template:sysctl[fs.file-nr].avg(0)}&gt;10240</expression>
+            <name>Too many opened files on {HOSTNAME}</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
             <description/>
             <type>0</type>
             <dependencies/>
