@@ -17,7 +17,7 @@ fi
 
 if [ ! -d /etc/zabbix/zabbix_agentd.d ]; then
   mkdir -p /etc/zabbix/zabbix_agentd.d
-  cp -v ./zabbix_agentd.d/*.conf /etc/zabbix/zabbix_agentd.d/
+  cp -v ./*.conf /etc/zabbix/zabbix_agentd.d/
 fi
 
 chown zabbix: /etc/zabbix/scripts/ -R

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>lesovsky@gmail.com</email>
+		<name>Lesovsky Alexey</name>
+	</maintainer>
+	<longdescription lang="en">
+		Additional monitoring extensions that can extend the ZABBIX functionality.
+		This modules written with BASH programming language and requires minimum dependencies.
+	</longdescription>
+	<use>
+		<flag name='flashcache'>Facebook Flashcache monitoring extension get stats from /proc.</flag>
+		<flag name='glusterfs-client'>Glusterfs client monitoring, auto-discovery and check mountpoints.</flag>
+		<flag name='memcached'>Internal memcached stats through direct connection to the memcached.</flag>
+		<flag name='pgbouncer'>PgBouncer internal statistics.</flag>
+		<flag name='postgres'>PostgreSQL statistics based on pg_stat_* tables and other pg-related information.</flag>
+		<flag name='redis'>Redis internal stats and raw data from redis storage via redis-cli.</flag>
+		<flag name='hwraid_smartarray'>Gathering information from SmartArray RAID controllers via hpacucli.</flag>
+	</use>
+</pkgmetadata>
+
