@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-05-13T09:30:26Z</date>
+    <date>2013-06-14T08:42:25Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -322,6 +322,45 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
+                    <key>system.cpu.util[,idle,avg1]</key>
+                    <delay>120</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>System load</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>CPU $2 time ($3)</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
                     <key>system.cpu.util[,nice,avg1]</key>
                     <delay>120</delay>
                     <history>7</history>
@@ -473,45 +512,6 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>CPU $2 time ($3)</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>system.cpu.util[,idle,avg1]</key>
-                    <delay>120</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>0</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>System load</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
                     <name>CPU user time (avg1)</name>
                     <type>0</type>
                     <snmp_community/>
@@ -603,84 +603,6 @@
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Free swap space</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>system.swap.size[,free]</key>
-                    <delay>120</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Free swap space in %</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>system.swap.size[,pfree]</key>
-                    <delay>120</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>0</value_type>
-                    <allowed_hosts/>
-                    <units>%</units>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1142,7 +1064,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[cron]</key>
+                    <key>proc.num[sshd]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -1181,7 +1103,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[sshd]</key>
+                    <key>proc.num[cron]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -1259,9 +1181,9 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[rsyslogd]</key>
+                    <key>proc.num[ntpd]</key>
                     <delay>120</delay>
-                    <history>7</history>
+                    <history>1</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -1298,9 +1220,9 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[ntpd]</key>
+                    <key>proc.num[rsyslogd]</key>
                     <delay>120</delay>
-                    <history>1</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -1527,6 +1449,45 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <valuemap/>
                 </item>
                 <item>
+                    <name>System: memory usage include swap, %</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.pmemusage</key>
+                    <delay>120</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
                     <name>Total memory</name>
                     <type>0</type>
                     <snmp_community/>
@@ -1540,84 +1501,6 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Total swap space</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>system.swap.size[,total]</key>
-                    <delay>3600</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Used swap space in %</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>system.swap.size[,pused]</key>
-                    <delay>120</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>0</value_type>
-                    <allowed_hosts/>
-                    <units>%</units>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1729,7 +1612,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.fs.discovery</key>
-                    <delay>3600</delay>
+                    <delay>7200</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_securityname/>
@@ -1746,7 +1629,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <privatekey/>
                     <port/>
                     <filter>{#FSTYPE}:(^ext|^reiserfs|^xfs)</filter>
-                    <lifetime>5</lifetime>
+                    <lifetime>1</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
@@ -1986,20 +1869,20 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Linux-Default-Template:vfs.fs.inode[{#FSNAME},pfree].last(0)}&lt;5</expression>
-                            <name>Low free disk inodes on {HOSTNAME} volume {#FSNAME}</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>5</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
                             <expression>{Linux-Default-Template:vfs.fs.inode[{#FSNAME},pfree].last(0)}&lt;10</expression>
                             <name>Low free disk inodes on {HOSTNAME} volume {#FSNAME}</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:vfs.fs.inode[{#FSNAME},pfree].last(0)}&lt;5</expression>
+                            <name>Low free disk inodes on {HOSTNAME} volume {#FSNAME}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>5</priority>
                             <description/>
                             <type>0</type>
                         </trigger_prototype>
@@ -2036,7 +1919,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
+                            <ymin_type_1>1</ymin_type_1>
                             <ymax_type_1>0</ymax_type_1>
                             <ymin_item_1>0</ymin_item_1>
                             <ymax_item_1>0</ymax_item_1>
@@ -2080,7 +1963,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
+                            <ymin_type_1>1</ymin_type_1>
                             <ymax_type_1>0</ymax_type_1>
                             <ymin_item_1>0</ymin_item_1>
                             <ymax_item_1>0</ymax_item_1>
@@ -2119,7 +2002,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>net.if.discovery</key>
-                    <delay>3600</delay>
+                    <delay>7200</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_securityname/>
@@ -2136,7 +2019,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <privatekey/>
                     <port/>
                     <filter>{#IFNAME}:(bond|br|eth)</filter>
-                    <lifetime>5</lifetime>
+                    <lifetime>1</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
@@ -2185,7 +2068,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                             <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>net.if.in[{#IFNAME},bytes]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>7</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2263,7 +2146,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                             <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>net.if.out[{#IFNAME},bytes]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>7</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2296,7 +2179,44 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                             <valuemap/>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes/>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:net.if.in[{#IFNAME},bytes].count(#5,60000000,&quot;gt&quot;)}</expression>
+                            <name>High incoming traffic on {#IFNAME} on {HOSTNAME}</name>
+                            <url/>
+                            <status>1</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:net.if.out[{#IFNAME},bytes].count(#5,40000000,&quot;gt&quot;)}</expression>
+                            <name>High outgoing traffic on {#IFNAME} on {HOSTNAME}</name>
+                            <url/>
+                            <status>1</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:net.if.in[{#IFNAME},packets].count(#5,5000,&quot;gt&quot;)}</expression>
+                            <name>Incoming packets high rate on {#IFNAME} on {HOSTNAME}</name>
+                            <url/>
+                            <status>1</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:net.if.out[{#IFNAME},packets].count(#5,5000,&quot;gt&quot;)}</expression>
+                            <name>Outgoing packets high rate on {#IFNAME} on {HOSTNAME}</name>
+                            <url/>
+                            <status>1</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
                             <name>System: Network activity on {#IFNAME} (bits/s)</name>
@@ -2388,6 +2308,247 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                         </graph_prototype>
                     </graph_prototypes>
                 </discovery_rule>
+                <discovery_rule>
+                    <name>Swap discovery</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>swap.discovery</key>
+                    <delay>7200</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>{#SWAP_EXISTS}:.*</filter>
+                    <lifetime>1</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Free swap space</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>system.swap.size[{#SWAP_EXISTS},free]</key>
+                            <delay>120</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>B</units>
+                            <delta>0</delta>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Free swap space in %</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>system.swap.size[{#SWAP_EXISTS},pfree]</key>
+                            <delay>120</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Total swap space</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>system.swap.size[{#SWAP_EXISTS},total]</key>
+                            <delay>3600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>B</units>
+                            <delta>0</delta>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Used swap space in %</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>system.swap.size[{#SWAP_EXISTS},pused]</key>
+                            <delay>120</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Linux-Default-Template:system.swap.size[{#SWAP_EXISTS},pfree].last(0)}&lt;40</expression>
+                            <name>Swap usage to high on {HOSTNAME} (swap free={ITEM.LASTVALUE})</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>System: Swap usage</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>000000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Linux-Default-Template</host>
+                                        <key>system.swap.size[{#SWAP_EXISTS},total]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>BB0000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Linux-Default-Template</host>
+                                        <key>system.swap.size[{#SWAP_EXISTS},free]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
             </discovery_rules>
             <macros/>
             <templates/>
@@ -2426,18 +2587,18 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:vm.memory.size[pavailable].last(0)}&lt;5</expression>
+            <expression>{Linux-Default-Template:vm.memory.size[pavailable].last(0)}&lt;5 | {Linux-Default-Template:system.pmemusage.last(0)}&gt;95</expression>
             <name>Available memory too low on {HOSTNAME}</name>
             <url/>
             <status>0</status>
-            <priority>4</priority>
+            <priority>5</priority>
             <description/>
             <type>0</type>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:system.cpu.load[,avg5].min(#2)}&gt;20</expression>
-            <name>Critical Load average (la={ITEM.LASTVALUE})</name>
+            <expression>{Linux-Default-Template:system.cpu.load[,avg5].avg(300)}&gt;25</expression>
+            <name>Critical load average (la5={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
@@ -2447,7 +2608,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
         </trigger>
         <trigger>
             <expression>{Linux-Default-Template:system.deleted_filehandler_maxsize.last(0)}&gt;1000000000</expression>
-            <name>Deleted open filehandler too big</name>
+            <name>Deleted open filehandler too big (size={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
@@ -2476,8 +2637,8 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:system.cpu.util[,iowait,avg5].avg(300)}&gt;15</expression>
-            <name>Iowait load is too high on {HOSTNAME}</name>
+            <expression>{Linux-Default-Template:system.cpu.util[,iowait,avg5].avg(300)}&gt;20</expression>
+            <name>Iowait load is too high on {HOSTNAME} (wa5={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
@@ -2486,18 +2647,8 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>({TRIGGER.VALUE}=0&amp;{Linux-Default-Template:vm.memory.size[free].last(0)}&lt;100M)|({TRIGGER.VALUE}=1&amp;{Linux-Default-Template:vm.memory.size[free].last(0)}&gt;400M)</expression>
-            <name>Lack of free memory ({ITEM.LASTVALUE1})</name>
-            <url/>
-            <status>0</status>
-            <priority>3</priority>
-            <description/>
-            <type>0</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
-            <expression>({TRIGGER.VALUE}=0&amp;{Linux-Default-Template:system.cpu.load[,avg5].min(#2)}&gt;8)|({TRIGGER.VALUE}=1&amp;{Linux-Default-Template:system.cpu.load[,avg5].min(#2)}&gt;5)</expression>
-            <name>Load average is too high</name>
+            <expression>{Linux-Default-Template:system.cpu.load[,avg5].avg(300)}&gt;15</expression>
+            <name>Load average 5 is too high (la5={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -2516,7 +2667,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:proc.num[].delta(#2)}&gt;100</expression>
+            <expression>{Linux-Default-Template:proc.num[].delta(#2)}&gt;150</expression>
             <name>Rapid processes uprise on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -2566,8 +2717,8 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:sysctl[fs.file-nr].avg(0)}&gt;10240</expression>
-            <name>Too many opened files on {HOSTNAME}</name>
+            <expression>{Linux-Default-Template:sysctl[fs.file-nr].last(0)}&gt;10240</expression>
+            <name>Too many opened files on {HOSTNAME} (fs.file-nr={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
@@ -2577,19 +2728,19 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
         </trigger>
         <trigger>
             <expression>{Linux-Default-Template:proc.num[].last(0)}&gt;1000</expression>
-            <name>Too many processes on {HOSTNAME}</name>
+            <name>Too many processes on {HOSTNAME} (num={ITEM.LASTVALUE})</name>
             <url/>
-            <status>1</status>
-            <priority>4</priority>
+            <status>0</status>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux-Default-Template:proc.num[,,run].last(0)}&gt;20</expression>
-            <name>Too many processes running concurrently on {HOSTNAME}</name>
+            <expression>{Linux-Default-Template:proc.num[,,run].last(0)}&gt;25</expression>
+            <name>Too many processes running concurrently on {HOSTNAME} (num={ITEM.LASTVALUE})</name>
             <url/>
-            <status>1</status>
+            <status>0</status>
             <priority>3</priority>
             <description/>
             <type>0</type>
@@ -2630,7 +2781,7 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             <name>Zabbix_agentd doesn't accept connections on {HOSTNAME}</name>
             <url/>
             <status>0</status>
-            <priority>4</priority>
+            <priority>5</priority>
             <description/>
             <type>0</type>
             <dependencies/>
@@ -2746,6 +2897,18 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     </item>
                 </graph_item>
                 <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>FF0099</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Linux-Default-Template</host>
+                        <key>system.cpu.util[,softirq,avg1]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
                     <sortorder>2</sortorder>
                     <drawtype>0</drawtype>
                     <color>339999</color>
@@ -2803,18 +2966,6 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <item>
                         <host>Linux-Default-Template</host>
                         <key>system.cpu.util[,system,avg1]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>FF0099</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Linux-Default-Template</host>
-                        <key>system.cpu.util[,softirq,avg1]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -2897,6 +3048,18 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
             </ymax_item_1>
             <graph_items>
                 <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>1</drawtype>
+                    <color>009900</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Linux-Default-Template</host>
+                        <key>vm.memory.size[buffers]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>1</drawtype>
                     <color>CC0000</color>
@@ -2930,18 +3093,6 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <item>
                         <host>Linux-Default-Template</host>
                         <key>vm.memory.size[free]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>1</drawtype>
-                    <color>009900</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Linux-Default-Template</host>
-                        <key>vm.memory.size[buffers]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -2986,50 +3137,6 @@ last(&quot;vm.memory.size[cached]&quot;)</params>
                     <item>
                         <host>Linux-Default-Template</host>
                         <key>proc.num[]</key>
-                    </item>
-                </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>System: Swap usage</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>000000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Linux-Default-Template</host>
-                        <key>system.swap.size[,total]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>BB0000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Linux-Default-Template</host>
-                        <key>system.swap.size[,free]</key>
                     </item>
                 </graph_item>
             </graph_items>
