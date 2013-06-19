@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/lesovsky/zabbix-extensions.git"
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="flashcache glusterfs-client memcached pgbouncer postgres redis unicorn"
+IUSE="flashcache glusterfs-client memcached pgbouncer postgres redis skytools unicorn"
 
 HWRAID="smartarray"
 
@@ -23,6 +23,7 @@ done
 DEPEND=">=net-analyzer/zabbix-2.0.0
 		pgbouncer? ( dev-db/postgresql-base )
 		postgres? ( dev-db/postgresql-base )
+		skytools? ( dev-db/postgresql-base )
 		redis? ( dev-db/redis )
 		hwraid_smartarray? ( sys-block/hpacucli )
 		unicorn? ( net-misc/curl )"
@@ -118,6 +119,15 @@ src_install() {
 			"files/hp-smart-array/scripts/hp-raid-ld-discovery.sh" \
 			"files/hp-smart-array/scripts/hp-raid-pd-discovery.sh"
 	fi
+
+	if use skytools; then
+		insinto /etc/zabbix/zabbix_agentd.d
+        doins "files/skytools/skytools.conf"
+        insinto /etc/zabbix/scripts/
+        doins \
+            "files/skytools/scripts/skytools.pgqd.sh" \
+			"files/skytools/scripts/skytools.pgqd.queue.discovery.sh"
+    fi
 
 	if use unicorn; then
 		insinto /etc/zabbix/zabbix_agentd.d
