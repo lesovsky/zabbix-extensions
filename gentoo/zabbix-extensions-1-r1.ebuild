@@ -90,6 +90,7 @@ src_install() {
 			"files/postgresql/scripts/pgsql.streaming.lag.sh" \
 			"files/postgresql/scripts/pgsql.transactions.sh" \
 			"files/postgresql/scripts/pgsql.uptime.sh" \
+			"files/postgresql/scripts/pgsql.trigger.sh" \
 			"files/postgresql/scripts/pgsql.wal.write.sh"
 	fi
 
