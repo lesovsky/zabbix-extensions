@@ -16,6 +16,7 @@
 		<flag name='pgbouncer'>PgBouncer internal statistics.</flag>
 		<flag name='postgres'>PostgreSQL statistics based on pg_stat_* tables and other pg-related information.</flag>
 		<flag name='redis'>Redis internal stats and raw data from redis storage via redis-cli.</flag>
+		<flag name='unicorn'>Unicorn application memory usage, process and application reply.</flag>
 		<flag name='hwraid_smartarray'>Gathering information from SmartArray RAID controllers via hpacucli.</flag>
 	</use>
 </pkgmetadata>
