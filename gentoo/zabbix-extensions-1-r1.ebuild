@@ -3,16 +3,19 @@
 # $Header: $
 
 EAPI=5
-inherit eutils git-2
+inherit eutils
 
 DESCRIPTION="Zabbix additional monitoring modules"
 HOMEPAGE="https://github.com/lesovsky/zabbix-extensions"
-EGIT_REPO_URI="https://github.com/lesovsky/zabbix-extensions.git"
+ZBX_EXT_GIT_SHA1="c21b3c1"
+ZBX_EXT_GIT_URI="https://github.com/lesovsky/zabbix-extensions/tarball/${ZBX_EXT_GIT_SHA1}"
+SRC_URI="${ZBX_EXT_GIT_URI} -> ${P}.tar.gz"
+S="${WORKDIR}/lesovsky-zabbix-extensions-${ZBX_EXT_GIT_SHA1}"
 
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="flashcache glusterfs-client memcached pgbouncer postgres redis skytools unicorn"
+IUSE="flashcache glusterfs-client memcached pgbouncer postgres redis sphinx2 skytools unicorn"
 
 HWRAID="smartarray"
 
@@ -23,8 +26,9 @@ done
 DEPEND=">=net-analyzer/zabbix-2.0.0
 		pgbouncer? ( dev-db/postgresql-base )
 		postgres? ( dev-db/postgresql-base )
-		skytools? ( dev-db/postgresql-base )
 		redis? ( dev-db/redis )
+		sphinx2? ( dev-db/mysql )
+		skytools? ( dev-db/postgresql-base )
 		hwraid_smartarray? ( sys-block/hpacucli )
 		unicorn? ( net-misc/curl )"
 RDEPEND="${DEPEND}"
@@ -109,6 +113,20 @@ src_install() {
 			"files/flashcache/scripts/flashcache.vol.discovery.sh"
     fi
 
+	if use sphinx2; then
+		insinto /etc/zabbix/zabbix_agentd.d
+        doins "files/sphinx2/sphinx2.conf"
+    fi
+
+	if use skytools; then
+		insinto /etc/zabbix/zabbix_agentd.d
+        doins "files/skytools/skytools.conf"
+        insinto /etc/zabbix/scripts/
+        doins \
+            "files/skytools/scripts/skytools.pgqd.queue.discovery.sh" \
+			"files/skytools/scripts/skytools.pgqd.sh"
+    fi
+
 	if use hwraid_smartarray; then
 		insinto /etc/zabbix/zabbix_agentd.d
 		doins "${S}/files/hp-smart-array/hp-raid-smart-array.conf"
@@ -119,15 +137,6 @@ src_install() {
 			"files/hp-smart-array/scripts/hp-raid-ld-discovery.sh" \
 			"files/hp-smart-array/scripts/hp-raid-pd-discovery.sh"
 	fi
-
-	if use skytools; then
-		insinto /etc/zabbix/zabbix_agentd.d
-        doins "files/skytools/skytools.conf"
-        insinto /etc/zabbix/scripts/
-        doins \
-            "files/skytools/scripts/skytools.pgqd.sh" \
-			"files/skytools/scripts/skytools.pgqd.queue.discovery.sh"
-    fi
 
 	if use unicorn; then
 		insinto /etc/zabbix/zabbix_agentd.d
@@ -141,9 +150,9 @@ pkg_postinst() {
 	chmod 0750 \
 		"${ROOT}"/etc/zabbix/scripts/*.sh
 
-	if use postgres; then
+	if use postgres || use skytools ; then
 		elog 
-		elog "For PostgreSQL monitoring need setup md5 auth with .pgpass for zabbix user."
+		elog "For PostgreSQL or Skytools monitoring need setup md5 auth with .pgpass for zabbix user."
 		elog "For example:"
 		elog "# echo 'localhost:5432:app_db:app_role:app_pass' > ~zabbix/.pgpass"
 		elog "# chown zabbix:zabbix ~zabbix/.pgpass"
