@@ -15,7 +15,7 @@ S="${WORKDIR}/lesovsky-zabbix-extensions-${ZBX_EXT_GIT_SHA1}"
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="flashcache glusterfs-client memcached pgbouncer postgres redis sphinx2 skytools unicorn"
+IUSE="flashcache glusterfs-client memcached pgbouncer postfix postgres redis sphinx2 skytools unicorn"
 
 HWRAID="smartarray"
 
@@ -70,6 +70,11 @@ src_install() {
 		doins \
 			"files/pgbouncer/scripts/pgbouncer.pool.discovery.sh" \
 			"files/pgbouncer/scripts/pgbouncer.stat.sh"
+	fi
+
+	if use postfix; then 
+		insinto /etc/zabbix/zabbix_agentd.d
+	    doins "files/postfix/postfix.conf"
 	fi
 
 	if use postgres; then
