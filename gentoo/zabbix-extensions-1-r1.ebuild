@@ -52,6 +52,8 @@ src_install() {
 		"files/linux/scripts/check-open-descriptors.sh" \
 		"files/linux/scripts/mem-usage.sh" \
 		"files/linux/scripts/swap.discovery.sh"
+	insinto /etc/cron.d
+	doins "files/linux/zabbix.cron"
 
 	if use redis; then 
 		insinto /etc/zabbix/zabbix_agentd.d
