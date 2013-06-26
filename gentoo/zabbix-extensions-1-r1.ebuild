@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Zabbix additional monitoring modules"
 HOMEPAGE="https://github.com/lesovsky/zabbix-extensions"
-ZBX_EXT_GIT_SHA1="c21b3c1"
+ZBX_EXT_GIT_SHA1="11feddc"
 ZBX_EXT_GIT_URI="https://github.com/lesovsky/zabbix-extensions/tarball/${ZBX_EXT_GIT_SHA1}"
 SRC_URI="${ZBX_EXT_GIT_URI} -> ${P}.tar.gz"
 S="${WORKDIR}/lesovsky-zabbix-extensions-${ZBX_EXT_GIT_SHA1}"
