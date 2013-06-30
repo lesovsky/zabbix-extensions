@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# swap discovery
+# Author:	Lesovsky A.V.
+# Description:	Swap discovery
 
 SIZE=$(swapon -s |grep -v ^Filename |awk '{sum += $3} END {print sum}')
 

@@ -1,0 +1,2 @@
+# Description:	HP SmartArray data gathering and analyze
+*/10    *       *       *       *       /etc/zabbix/scripts/hp-raid-data-processor.sh

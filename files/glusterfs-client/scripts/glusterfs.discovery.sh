@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# glusterfs mounts auto-discovery
+# Author:	Lesovsky A.V.
+# Description:	Glusterfs mounts auto-discovery
 
 mountpoints=$(grep glusterfs /etc/fstab |grep -v ^# |awk '{print $2}')
 

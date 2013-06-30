@@ -2,6 +2,7 @@
 # Author:       Lesovsky A.V.
 # Description:  Gathering available information about MegaCLI supported devices.
 # Description:  Analyze information and send data to zabbix server.
+# Disclaimer:	VERY VERY EXPERIMENTAL. 
 
 PATH="/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/bin"
 

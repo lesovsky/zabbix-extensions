@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Author:	Lesovsky A.V.
-# Added:	04-12-2013
-# Issue:	http://next.jira.fun-box.ru/browse/TS-58
 # Descriprion:	Low-level discovery for HP Smart Array controllers
 
 data="/tmp/hp-raid-data-harvester.out"

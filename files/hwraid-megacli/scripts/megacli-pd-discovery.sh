@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Author: Alexey Lesovsky
-# автопоиск дисков. VERY VERY EXPERIMENTAL (TESTED ON MEGACLI 8.02.21 Oct 21, 2011)
+# Author: Lesovsky A.V.
+# Physical drives auto-discovery. VERY VERY EXPERIMENTAL (TESTED ON MEGACLI 8.02.21 Oct 21, 2011)
 
 adp_list=$(sudo megacli adpallinfo aALL nolog |grep "^Adapter #" |cut -d# -f2)
 enc_list=$(for a in $adp_list; do sudo megacli encinfo a$a nolog |grep -w "Device ID" |awk '{print $4}'; done)

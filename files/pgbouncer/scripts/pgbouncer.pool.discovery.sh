@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# pgbouncer pools auto-discovery
+# Author: 	Lesovsky A.V.
+# Description:	Pgbouncer pools auto-discovery
 
 if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
 hostname=$(grep -w ^listen_addr /etc/pgbouncer.conf |cut -d" " -f3 |cut -d, -f1)

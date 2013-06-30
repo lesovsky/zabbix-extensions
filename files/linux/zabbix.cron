@@ -1,4 +1,3 @@
-# Описание:     дополнительные проверки для Zabbix
-# Автор:        Лесовский А.В.
-# Добавил:      05-07-2013
+# Author:	Lesovsky A.V.
+# Description:	Extended zabbix check
 0 */2 * * *	root /etc/zabbix/scripts/check-open-descriptors.sh

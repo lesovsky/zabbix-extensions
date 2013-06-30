@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+# Author:	Lesovsky A.V.
+# Description:	Pgbouncer pools stats
 # $1 - param_name, $2 - pool_name
-# pgbouncer pools stats
 
 if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
 

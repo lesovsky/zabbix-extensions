@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# flashcache volumes auto-discovery
+# Author:	Lesovsky A.V. <lesovsky@gmail.com>
+# Description:	Flashcache volumes auto-discovery
 
 dms=$(for dm in $(sudo dmsetup ls |awk '{print $1}'); do if (sudo dmsetup status $dm |grep flashcache &> /dev/null); then echo $dm; fi; done)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Alexey Lesovsky
+# Author: Lesovsky A.V.
 # Logical drives auto-discovery via MegaCLI. VERY VERY EXPERIMENTAL (TESTED WITH 8.02.21 Oct 21, 2011)
 
 adp_list=$(sudo megacli adpallinfo aALL nolog |grep "^Adapter #" |cut -d# -f2)

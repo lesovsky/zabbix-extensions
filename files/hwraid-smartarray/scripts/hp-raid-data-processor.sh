@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Author:	Lesovsky A.V.
-# Added:	04.12.2013
-# Issue:	http://next.jira.fun-box.ru/browse/TS-58
 # Description:	Gathering available information about HP Smart Array devices.
 # Description:  Analyze information and send data to zabbix server.
 
@@ -17,7 +15,7 @@ ctrl_list=$(${hpacucli} ctrl all show |grep -oE 'Slot [0-9]+' |awk '{print $2}' 
 
 echo -n > $data_tmp
 
-# берем список контроллеров и берем с каждого информацию.
+# Get adapters list and get info about each.
 echo "### ctrl section begin ###" >> $data_tmp
 for slot in $ctrl_list; 
   do
@@ -27,7 +25,7 @@ for slot in $ctrl_list;
   done
 echo "### ctrl section end ###" >> $data_tmp
 
-# перебираем все контроллеры и все логические тома на этих контроллерах
+# enumerate all adapters and all logical drives on each adapter.
 echo "### ld section begin ###" >> $data_tmp
 for slot in $ctrl_list; 
   do
@@ -41,7 +39,7 @@ for slot in $ctrl_list;
   done
 echo "### ld section end ###" >> $data_tmp
 
-# перебираем все контроллеры и все физические диски на этих контроллерах
+# enumerate all adapters and all physical drives on each adapter.
 echo "### pd section begin ###" >> $data_tmp
 for slot in $ctrl_list; 
   do
@@ -57,6 +55,7 @@ echo "### pd section end ###" >> $data_tmp
 
 mv $data_tmp $data_out
 
+# fill zabbix key
 echo -n > $all_keys
 echo -n > $zbx_data
 
@@ -116,4 +115,5 @@ cat $all_keys | while read key; do
   fi
   done
 
+# send data to zabbix server
 zabbix_sender -z $zbx_server -i $zbx_data &> /dev/null

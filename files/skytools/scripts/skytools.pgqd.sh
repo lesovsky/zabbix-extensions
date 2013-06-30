@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Author: Alexey Lesovsky
-# сбор информации по pgq очередям и консумерам
-# первым параметр - имя очереди
-# второй параметр - информационный параметр 
+# Author: 	Lesovsky A.V.
+# Description:	queue and consumers info
+# $1 - queue name, $2 - param
 
 username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
 

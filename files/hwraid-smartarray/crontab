@@ -1,2 +1,0 @@
-# Описание: сбор информации о HP SmartArray и отправка на сервер мониторинга
-*/10    *       *       *       *       /etc/zabbix/scripts/hp-raid-data-processor.sh

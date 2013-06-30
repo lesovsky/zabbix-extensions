@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author:	Lesovsky A.V.
+# Description:	yum updates info
 
 YUM_RESULT=/tmp/yum-security.out
 ZBX_DATA=/tmp/zabbix-sender-yum-data.in

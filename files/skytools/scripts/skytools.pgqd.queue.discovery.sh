@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Author: Alexey Lesovsky
-# автопоиск очередей pgq
+# Author: 	Lesovsky A.V.
+# Description:	PGQ queues auto-discovery
 
 username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
 
