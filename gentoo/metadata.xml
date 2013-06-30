@@ -20,6 +20,7 @@
 		<flag name='sphinx2'>Sphinx2 internal statistics.</flag>
 		<flag name='skytools'>Skytools PGQ queues monitoring via psql.</flag>
 		<flag name='unicorn'>Unicorn application memory usage, process and application reply.</flag>
+		<flag name='hwraid_megacli'>Gathering RAID controllers information via MegaCLI.</flag>
 		<flag name='hwraid_smartarray'>Gathering information from SmartArray RAID controllers via hpacucli.</flag>
 	</use>
 </pkgmetadata>
