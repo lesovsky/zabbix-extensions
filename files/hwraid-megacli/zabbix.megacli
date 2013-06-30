@@ -1,0 +1,3 @@
+# Author:	Lesovsky A.V. <lesovsky@gmail.com>
+# Description:	MegaCLI data gathering, analyzing, and sending.
+0 */1 * * *	root /etc/zabbix/scripts/megacli-raid-data-processor.sh
