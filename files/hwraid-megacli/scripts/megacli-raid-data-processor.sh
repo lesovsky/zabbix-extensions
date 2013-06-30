@@ -158,4 +158,4 @@ cat $all_keys | while read key; do
   fi
   done
 
-zabbix_sender -vv -z $zbx_server -i $zbx_data 
+zabbix_sender -z $zbx_server -i $zbx_data &> /dev/null
