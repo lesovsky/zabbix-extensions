@@ -9,7 +9,7 @@ if [ -f $data ]; then
   else echo "$data not found."; exit 1
 fi
 
-if [ $1 = raw ]; then
+if [[ $1 = raw ]]; then
   for line in ${ld_list}; do echo $line; done ; exit 0
 fi
 
