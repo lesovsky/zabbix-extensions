@@ -1,0 +1,3 @@
+# Author:       Lesovsky A.V. <lesovsky@gmail.com>
+# Description:  Adaptec data gathering, analyzing, and sending.
+0 */1 * * *	root /etc/zabbix/scripts/adaptec-raid-data-processor.sh
