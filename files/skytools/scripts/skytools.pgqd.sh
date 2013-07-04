@@ -32,4 +32,4 @@ case "$PARAM" in
 * ) echo ZBX_NOTSUPPORTED; exit 1;;
 esac
 
-psql -h localhost -p 5432 -tA -U "$username" "$dbname" -c "$q"
+psql -h localhost -p 5432 -tA -U "$username" "$dbname" -c "$q" |head -n 1
