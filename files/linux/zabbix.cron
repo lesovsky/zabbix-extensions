@@ -1,3 +1,3 @@
 # Author:	Lesovsky A.V.
 # Description:	Extended zabbix check
-0 */2 * * *	root /usr/libexec/zabbix-extensions/scripts/check-open-descriptors.sh
+0 */2 * * *	root /usr/libexec/zabbix-extensions/scripts/check-open-descriptors.sh &> /dev/null
