@@ -12,9 +12,9 @@ data_out="/run/megacli-raid-data-harvester.out"
 all_keys='/run/keys'
 zbx_server=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
 zbx_data='/run/zabbix-sender-megacli-raid-data.in'
-adp_list=$(/etc/zabbix/scripts/megacli-adp-discovery.sh raw)
-ld_list=$(/etc/zabbix/scripts/megacli-ld-discovery.sh raw)
-pd_list=$(/etc/zabbix/scripts/megacli-pd-discovery.sh raw)
+adp_list=$(/usr/libexec/zabbix-extensions/scripts/megacli-adp-discovery.sh raw)
+ld_list=$(/usr/libexec/zabbix-extensions/scripts/megacli-ld-discovery.sh raw)
+pd_list=$(/usr/libexec/zabbix-extensions/scripts/megacli-pd-discovery.sh raw)
 
 echo -n > $data_tmp
 
