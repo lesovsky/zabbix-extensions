@@ -14,8 +14,8 @@ fi
 
 dbname=$(grep $master ~zabbix/.pgpass |cut -d: -f3)
 
-echo $(( \
-	$(printf "%d\n" "0x"$(psql -qAtX -h $master -U $username $dbname -c "SELECT pg_current_xlog_location()" |cut -d\/ -f2)) \
-	- \
-	$(printf "%d\n" "0x"$(psql -qAtX -h localhost -U $username $dbname -c "SELECT pg_last_xlog_replay_location()" |cut -d\/ -f2)) \
-      ))
+s=$(psql -qAtX -h localhost -U $username $dbname -c "select extract(epoch from pg_last_xact_replay_timestamp())" |cut -d. -f1)
+now=$(psql -qAtX -h localhost -U $username $dbname -c "select extract(epoch from now())" |cut -d. -f1)
+
+r=$(echo $(( $now - $s )))
+if [ "0" -ge "$r" ]; then echo 0; else echo $r; fi
