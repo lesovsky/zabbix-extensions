@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Author:	Lesovsky A.V.
 # Description:	yum updates info
 
@@ -16,12 +16,12 @@ critical=$(grep 'Critical/Sec.' /tmp/yum-bugs |awk '{print $1}')
 enhancement=$(grep 'enhancement' /tmp/yum-bugs |awk '{print $1}')
 bugfix=$(grep 'bugfix' /tmp/yum-bugs |awk '{print $1}')
 
-if [ -z $low ]; then low=0; fi
-if [ -z $moderate ]; then moderate=0; fi
-if [ -z $important ]; then important=0; fi
-if [ -z $critical ]; then critical=0; fi
-if [ -z $enhancement ]; then enhancement=0; fi
-if [ -z $bugfix ]; then bugfix=0; fi
+[[ ! $low ]] && low=0
+[[ ! $moderate ]] && moderate=0
+[[ ! $important ]] && important=0
+[[ ! $critical ]] && critical=0
+[[ ! $enhancement ]] && enhancement=0
+[[ ! $bugfix ]] && bugfix=0
 
 echo -n > $ZBX_DATA
 echo "$(hostname) rh.updates.enh $enhancement" >> $ZBX_DATA
