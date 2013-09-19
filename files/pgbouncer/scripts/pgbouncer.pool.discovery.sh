@@ -3,7 +3,8 @@
 # Description:	Pgbouncer pools auto-discovery
 
 if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
-hostname=$(grep -w ^listen_addr /etc/pgbouncer.ini |cut -d" " -f3 |cut -d, -f1)
+config='/etc/pgbouncer.ini'
+hostname=$(grep -w ^listen_addr $config |cut -d" " -f3 |cut -d, -f1)
 port=6432
 dbname="pgbouncer"
 username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
