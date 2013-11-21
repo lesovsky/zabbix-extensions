@@ -11,9 +11,9 @@ data_out="/run/adaptec-raid-data-harvester.out"
 all_keys='/run/keys'
 zbx_server=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
 zbx_data='/run/zabbix-sender-adaptec-raid-data.in'
-adp_list=$(/etc/zabbix/scripts/adaptec-adp-discovery.sh raw)
-ld_list=$(/etc/zabbix/scripts/adaptec-ld-discovery.sh raw)
-pd_list=$(/etc/zabbix/scripts/adaptec-pd-discovery.sh raw)
+adp_list=$(/usr/libexec/zabbix-extensions/scripts/adaptec-adp-discovery.sh raw)
+ld_list=$(/usr/libexec/zabbix-extensions/scripts/adaptec-ld-discovery.sh raw)
+pd_list=$(/usr/libexec/zabbix-extensions/scripts/adaptec-pd-discovery.sh raw)
 
 echo -n > $data_tmp
 

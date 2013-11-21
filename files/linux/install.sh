@@ -15,4 +15,4 @@ chown zabbix: /etc/zabbix/scripts/*.sh
 chmod 755 /etc/zabbix/scripts/*.sh
 
 echo "Info: add task into root crontab."
-(crontab -l; echo "0 */2 * * * /etc/zabbix/scripts/check-open-descriptors.sh") |uniq - |crontab -
+(crontab -l; echo "0 */2 * * * /usr/libexec/zabbix-extensions/scripts/check-open-descriptors.sh") |uniq - |crontab -

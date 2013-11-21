@@ -59,17 +59,17 @@ mv $data_tmp $data_out
 echo -n > $all_keys
 echo -n > $zbx_data
 
-for c in $(/etc/zabbix/scripts/hp-raid-ctrl-discovery.sh raw); 
+for c in $(/usr/libexec/zabbix-extensions/scripts/hp-raid-ctrl-discovery.sh raw); 
   do
     echo -n -e "hpraid.ctrl.status[$c]\nhpraid.cache.status[$c]\nhpraid.bbu.status[$c]\n"; 
   done >> $all_keys
 
-for l in $(/etc/zabbix/scripts/hp-raid-ld-discovery.sh raw);
+for l in $(/usr/libexec/zabbix-extensions/scripts/hp-raid-ld-discovery.sh raw);
   do
     echo -n -e "hpraid.ld.status[$l]\n";
   done >> $all_keys
 
-for p in $(/etc/zabbix/scripts/hp-raid-pd-discovery.sh raw);
+for p in $(/usr/libexec/zabbix-extensions/scripts/hp-raid-pd-discovery.sh raw);
   do
     echo -n -e "hpraid.pd.status[$p]\nhpraid.pd.temperature[$p]\n";
   done >> $all_keys
