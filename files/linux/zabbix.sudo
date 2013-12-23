@@ -1,0 +1,6 @@
+# Sudo rules for zabbix
+
+Cmnd_Alias HWRAID = /opt/bin/arcconf, /usr/sbin/hpacucli, /opt/bin/megacli
+Cmnd_Alias FILES = /usr/bin/lsof
+
+zabbix ALL=(root) NOPASSWD: HWRAID, FILES
