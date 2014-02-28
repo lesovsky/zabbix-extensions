@@ -3,14 +3,18 @@
 # Description:	Pgbouncer pools stats
 # $1 - param_name, $2 - pool_name
 
-if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
+if [ -f /root/.pgpass ];
+then
+	username=$(head -n 1 /root/.pgpass |cut -d: -f4)
+else
+	username="postgres"
+fi
 
 PSQL=$(which psql)
-config='/etc/pgbouncer.ini'
+config='/etc/pgbouncer/pgbouncer.ini'
 hostname=$(grep -w ^listen_addr $config |cut -d" " -f3 |cut -d, -f1)
 port=6432
 dbname="pgbouncer"
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
 PARAM="$1"
 
 if [ '*' = "$hostname" ]; then hostname="127.0.0.1"; fi
