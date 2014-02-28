@@ -27,5 +27,5 @@ chmod 755 /etc/zabbix/scripts/*.sh
 echo "Info: edit zabbix_agentd configuration."
 echo 'Include=/etc/zabbix/zabbix_agentd.d/' >> /etc/zabbix/zabbix_agentd.conf
 echo "Info: add task into root crontab."
-(crontab -l; echo "*/10    *       *       *       *       /usr/libexec/zabbix-extensions/scripts/hp-raid-data-processor.sh") |uniq - |crontab -
+(crontab -l; echo "*/10    *       *       *       *       /etc/zabbix/scripts/hp-raid-data-processor.sh") |uniq - |crontab -
 echo "Finish: perform zabbix_agentd service restart for activate changes."
