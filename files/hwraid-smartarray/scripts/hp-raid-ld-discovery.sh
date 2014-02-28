@@ -16,12 +16,18 @@ fi
 printf "{\n";
 printf "\t\"data\":[\n\n";
 
+has_line=0;
 for line in ${ld_list}
 do
+	if [ $has_line -eq 1 ];
+	then
+		printf ",\n";
+	fi;
     printf "\t{\n";
     printf "\t\t\"{#LD}\":\"$line\"\n";
-    printf "\t},\n";
+    printf "\t}";
+	has_line=1;
 done
 
-printf "\n\t]\n";
+printf "\n\n\t]\n";
 printf "}\n";
