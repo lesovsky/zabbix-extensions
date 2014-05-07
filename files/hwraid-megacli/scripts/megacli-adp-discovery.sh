@@ -8,15 +8,6 @@ if [[ $1 = raw ]]; then
   for adp in ${adp_list}; do echo $adp; done ; exit 0
 fi
 
-printf "{\n";
-printf "\t\"data\":[\n\n";
-
-for adp in ${adp_list}
-do
-    printf "\t{\n";
-    printf "\t\t\"{#ADPNUM}\":\"$adp\"\n";
-    printf "\t},\n";
-done
-
-printf "\n\t]\n";
-printf "}\n";
+echo -n '{"data":['
+for adp in $adp_list; do echo -n "{\"{#ADPNUM}\": \"$adp\"},"; done |sed -e 's:\},$:\}:'
+echo -n ']}'
