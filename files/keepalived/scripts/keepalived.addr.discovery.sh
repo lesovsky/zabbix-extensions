@@ -9,15 +9,6 @@ KEEPALIVED_CONF=$1
 
 ADDRESSES=$(sed -n -e '/virtual_ipaddress {/,/}/p' $KEEPALIVED_CONF |grep -v ^# |grep -oE '([0-9]{1,3}[\.]){3}[0-9]{1,3}*')
 
-printf "{\n";
-printf "\t\"data\":[\n\n";
-
-for addr in $ADDRESSES
-do
-    printf "\t{\n";
-    printf "\t\t\"{#KADDR}\":\"$addr\"\n";
-    printf "\t},\n";
-done
-
-printf "\n\t]\n";
-printf "}\n";
+echo -n '{"data":['
+for addr in $ADDRESSES; do echo -n "{\"{#KADDR}\": \"$addr\"},"; done |sed -e 's:\},$:\}:'
+echo -n ']}'
