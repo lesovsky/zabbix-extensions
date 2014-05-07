@@ -15,16 +15,6 @@ fi
 
 queuelist=$(psql -qAtX -h localhost -U $username $dbname -c "select pgq.get_queue_info()" |cut -d, -f1 |tr -d \()
 
-
-printf "{\n";
-printf "\t\"data\":[\n\n";
-
-for queue in ${queuelist}
-do
-    printf "\t{\n";
-    printf "\t\t\"{#QNAME}\":\"$queue\"\n";
-    printf "\t},\n";
-done
-
-printf "\n\t]\n";
-printf "}\n";
+echo -n '{"data":['
+for queue in $queuelist; do echo -n "{\"{#QNAME}\": \"$queue\"},"; done |sed -e 's:\},$:\}:'
+echo -n ']}'
