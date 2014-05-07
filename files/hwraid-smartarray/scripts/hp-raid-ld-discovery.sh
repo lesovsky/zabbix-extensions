@@ -13,15 +13,6 @@ if [[ $1 = raw ]]; then
   for line in ${ld_list}; do echo $line; done ; exit 0
 fi
 
-printf "{\n";
-printf "\t\"data\":[\n\n";
-
-for line in ${ld_list}
-do
-    printf "\t{\n";
-    printf "\t\t\"{#LD}\":\"$line\"\n";
-    printf "\t},\n";
-done
-
-printf "\n\t]\n";
-printf "}\n";
+echo -n '{"data":['
+for ld in $ld_list; do echo -n "{\"{#LD}\": \"$ld\"},"; done |sed -e 's:\},$:\}:'
+echo -n ']}'

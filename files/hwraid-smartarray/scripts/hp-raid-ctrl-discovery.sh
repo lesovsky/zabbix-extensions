@@ -13,15 +13,6 @@ if [[ $1 = raw ]]; then
   for line in ${ctrl_list}; do echo $line; done ; exit 0
 fi
 
-printf "{\n";
-printf "\t\"data\":[\n\n";
-
-for line in ${ctrl_list}
-do
-    printf "\t{\n";
-    printf "\t\t\"{#CTRL_SLOT}\":\"$line\"\n";
-    printf "\t},\n";
-done
-
-printf "\n\t]\n";
-printf "}\n";
+echo -n '{"data":['
+for ctrl in $ctrl_list; do echo -n "{\"{#CTRL_SLOT}\": \"$ctrl\"},"; done |sed -e 's:\},$:\}:'
+echo -n ']}'
