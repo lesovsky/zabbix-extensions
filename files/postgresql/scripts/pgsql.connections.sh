@@ -32,7 +32,7 @@ case "$PARAM" in
         query="SELECT COUNT(*) FROM pg_stat_activity WHERE waiting <> 'f';"
 ;;
 'total_pct' )
-        query="select count(*)*100/(select (setting::int) from pg_settings where name = 'max_connections') from pg_stat_activity;"
+        query="select count(*)*100/(select current_setting('max_connections')::int) from pg_stat_activity;"
 ;;
 * ) echo "ZBX_NOTSUPPORTED"; exit 1;;
 esac
