@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Author: Alexey Lesovsky
-# время отклика БД
+# Description: postgres ping
 
 username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
 
