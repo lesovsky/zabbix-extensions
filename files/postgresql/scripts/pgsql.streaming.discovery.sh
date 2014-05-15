@@ -14,8 +14,13 @@ if [ -z "$*" ];
 fi
 PARAM="$1"
 
-replica_list=$(psql -qAtX -h localhost -U $username -tl --dbname=$dbname -c "SELECT client_addr FROM pg_stat_replication")
-
-echo -n '{"data":['
-for replica in $replica_list; do echo -n "{\"{#HOTSTANDBY}\": \"$replica\"},"; done |sed -e 's:\},$:\}:'
-echo -n ']}'
+if [[ $1 = count ]]; 
+  then
+    psql -qAtX -h localhost -U $username -tl --dbname=$dbname -c "SELECT count(*) FROM pg_stat_replication"
+    exit 0
+  else
+    replica_list=$(psql -qAtX -h localhost -U $username -tl --dbname=$dbname -c "SELECT client_addr FROM pg_stat_replication")
+    echo -n '{"data":['
+    for replica in $replica_list; do echo -n "{\"{#HOTSTANDBY}\": \"$replica\"},"; done |sed -e 's:\},$:\}:'
+    echo -n ']}'
+fi
