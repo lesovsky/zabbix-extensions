@@ -13,4 +13,4 @@ if [ -z "$*" ];
     dbname="postgres"
 fi
 
-psql -qAtX -h localhost -U $username -tl --dbname=$dbname -c "SELECT pg_is_in_recovery()::int"
+psql -qAtX -h localhost -U $username -tl --dbname=$dbname -c "SELECT pg_is_in_recovery()"
