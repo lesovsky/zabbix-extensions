@@ -1,18 +1,17 @@
-#!/bin/sh
-# Author: Alexey Lesovsky
-# сбор информации о текущих подключениях к БД
-# первым параметром указывается статус процесса, вторым - база (опционально)
+#!/usr/bin/env bash
+# Author:	Lesovsky A.V., lesovsky@gmail.com
+# Description:	Get current connections information
+# http://www.postgresql.org/docs/9.3/static/monitoring-stats.html#PG-STAT-ACTIVITY-VIEW
 
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
-
-#если имя базы не получено от сервера, то имя берется из ~zabbix/.pgpass
-if [ "$#" -lt 2 ]; 
-  then 
-    if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
-    dbname=$(head -n 1 ~zabbix/.pgpass |cut -d: -f3);
-  else
-    dbname="$2"
+[[ -z "$*" ]] && { echo "ZBX_NOTSUPPORTED: specify parameter"; exit 1; }
+if [[ -f ~zabbix/.pgpass ]]
+  then
+    username=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f4)
+    dbname=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f3)
 fi
+dbname=${dbname:-postgres}
+username=${username:-postgres}
+
 PARAM="$1"
 
 case "$PARAM" in

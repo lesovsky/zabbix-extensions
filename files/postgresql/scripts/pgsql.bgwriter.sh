@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
-# Description: bgwriter statistics. http://www.postgresql.org/docs/9.2/static/monitoring-stats.html#PG-STAT-BGWRITER-VIEW
+# Author:	Lesovsky A.V., lesovsky@gmail.com
+# Description:	Background writer statistics. 
+# http://www.postgresql.org/docs/9.3/static/monitoring-stats.html#PG-STAT-BGWRITER-VIEW
 
-[[ -f ~zabbix/.pgpass ]] || { echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; }
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
-dbname=$(head -n 1 ~zabbix/.pgpass |cut -d: -f3)
+[[ -z "$*" ]] && { echo "ZBX_NOTSUPPORTED: specify parameter"; exit 1; }
+if [[ -f ~zabbix/.pgpass ]]
+  then
+    username=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f4)
+    dbname=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f3)
+fi
+dbname=${dbname:-postgres}
+username=${username:-postgres}
+
 PARAM="$1"
 
 query="SELECT $PARAM FROM pg_stat_bgwriter"

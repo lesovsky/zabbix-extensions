@@ -1,65 +1,27 @@
-#!/bin/sh
-# Author: Alexey Lesovsky
-# сбор статистики работа БД
-# Standard Statistics Views - pg_stat_database
+#!/usr/bin/env bash
+# Author:	Lesovsky A.V., lesovsky@gmail.com
+# Description:	Get database-wide statistics
+# http://www.postgresql.org/docs/9.3/static/monitoring-stats.html#PG-STAT-DATABASE-VIEW
 
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
-
-#если имя базы не получено от сервера, то имя берется из первой строки ~zabbix/.pgpass
-if [ "$#" -lt 2 ]; 
-  then 
-    if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
-    dbname=$(head -n 1 ~zabbix/.pgpass |cut -d: -f3);
-  else
-    dbname="$2"
+[[ -z "$*" ]] && { echo "ZBX_NOTSUPPORTED: specify parameter"; exit 1; }
+if [[ -f ~zabbix/.pgpass ]]
+  then
+    username=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f4)
+    dbname=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f3)
 fi
-PARAM="$1"
+dbname=${dbname:-postgres}
+username=${username:-postgres}
 
-case "$PARAM" in
-'blks_hit' )
-        query_substr="SELECT SUM(blks_hit) FROM pg_stat_database"
-;;
-'blks_read' )
-        query_substr="SELECT SUM(blks_read) FROM pg_stat_database"
-;;
-'commits' )
-        query_substr="SELECT SUM(xact_commit) FROM pg_stat_database"
-;;
-'rollbacks' )
-        query_substr="SELECT SUM(xact_rollback) FROM pg_stat_database"
-;;
-'tup_deleted' )
-        query_substr="SELECT SUM(tup_deleted) FROM pg_stat_database"
-;;
-'tup_inserted' )
-        query_substr="SELECT SUM(tup_inserted) FROM pg_stat_database"
-;;
-'tup_fetched' )
-        query_substr="SELECT SUM(tup_fetched) FROM pg_stat_database"
-;;
-'tup_updated' )
-        query_substr="SELECT SUM(tup_updated) FROM pg_stat_database"
-;;
-'tup_returned' )
-        query_substr="SELECT SUM(tup_returned) FROM pg_stat_database"
-;;
-'temp_files' )
-        query_substr="SELECT SUM(temp_files) FROM pg_stat_database"
-;;
-'temp_bytes' )
-        query_substr="SELECT SUM(temp_bytes) FROM pg_stat_database"
-;;
-'deadlocks' )
-        query_substr="SELECT SUM(deadlocks) FROM pg_stat_database"
-;;
-* ) echo "ZBX_NOTSUPPORTED"; exit 1;;
-esac
+PARAM="$1"
+TARGETDB="$2"
+
+query_substr="SELECT SUM($PARAM) FROM pg_stat_database"
 
 if [ -z "$2" ];
   then
     query="$query_substr"
   else
-    query="$query_substr WHERE datname = '$dbname'"
+    query="$query_substr WHERE datname = '$TARGETDB'"
 fi
 
-psql -qAtX -F: -c "$query" -h localhost -U "$username" "$dbname"
+psql -qAtX -h localhost -U "$username" "$dbname" -c "$query" || { echo "ZBX_NOTSUPPORTED"; exit 1; }

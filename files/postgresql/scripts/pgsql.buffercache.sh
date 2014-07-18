@@ -1,11 +1,16 @@
-#!/bin/sh
-# Author: Alexey Lesovsky
-# сбор информации о буфферах в shared_memory.
-# требуется включение модуля pg_buffercache и при использовании дает оверхед производительности.
-# http://www.postgresql.org/docs/9.1/static/pgbuffercache.html
+#!/usr/bin/env bash
+# Author:	Lesovsky A.V., lesovsky@gmail.com
+# Description:	Allow examining what's happening in the shared buffer cache in real time.
+# http://www.postgresql.org/docs/9.3/static/pgbuffercache.html
 
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
-dbname=$(head -n 1 ~zabbix/.pgpass |cut -d: -f3);
+[[ -z "$*" ]] && { echo "ZBX_NOTSUPPORTED: specify parameter"; exit 1; }
+if [[ -f ~zabbix/.pgpass ]]
+  then
+    username=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f4)
+    dbname=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f3)
+fi
+dbname=${dbname:-postgres}
+username=${username:-postgres}
 
 PARAM="$1"
 

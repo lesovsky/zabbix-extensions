@@ -1,18 +1,15 @@
-#!/bin/sh
-# Author: Alexey Lesovsky
-# Details http://www.postgresql.org/docs/9.0/interactive/routine-vacuuming.html
-# 23.1.4. Preventing Transaction ID Wraparound Failures
+#!/usr/bin/env bash
+# Author:	Lesovsky A.V., lesovsky@gmail.com
+# Description:	Transaction ID Wraparound information
+# http://www.postgresql.org/docs/9.3/interactive/routine-vacuuming.html
 
-username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
-
-#если имя базы не получено от сервера, то имя берется из ~zabbix/.pgpass
-if [ -z "$*" ]; 
-  then 
-    if [ ! -f ~zabbix/.pgpass ]; then echo "ERROR: ~zabbix/.pgpass not found" ; exit 1; fi
-    dbname=$(head -n 1 ~zabbix/.pgpass |cut -d: -f3);
-  else
-    dbname="$1"
+if [[ -f ~zabbix/.pgpass ]]
+  then
+    username=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f4)
+    dbname=$(head -n 1 ~zabbix/.pgpass 2>/dev/null |cut -d: -f3)
 fi
+dbname=${dbname:-postgres}
+username=${username:-postgres}
 
 query="SELECT freez,txns,ROUND(100*(txns/freez::float)) AS perc,datname \
 	FROM \
