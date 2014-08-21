@@ -71,6 +71,8 @@ PG_CONNINFO_STANDBY - connection settings for zabbix agent connections to the po
 
 PG_CACHE_HIT_RATIO - shared buffers cache ratio;
 
+PG_CHECKPOINTS_REQ_THRESHOLD - threshold for checkpoints which occured by demand;
+
 PG_CONFLICTS_THRESHOLD - threshold for recovery conflicts trigger;
 
 PG_CONN_IDLE_IN_TRANSACTION - threshold for connections which is idle in transaction state;
@@ -98,13 +100,15 @@ PG_UPTIME_THRESHOLD - threshold for service uptime.
 #### Graphs description
 - PostgreSQL bgwriter - information about buffers, how much allocated and written.
 - PostgreSQL buffers - general information about shared buffers; how much cleaned, dirtied, used and total.
+- PostgreSQL checkpoints - checkpoints and write/sync time during chckpoints.
 - PostgreSQL connections - connection info (idle, active, waiting, idle in transaction).
-- PostgreSQL status - uptime, service response, average query time (pg_stat_statements required).
+- PostgreSQL service response - service response, average query time (pg_stat_statements required).
 - PostgreSQL summary db stats: block hit/read - information about how much blocks read from disk or cache.
 - PostgreSQL summary db stats: events - commits and rollbacks, recovery conflicts and deadlocks.
 - PostgreSQL summary db stats: temp files - information about allocated temporary files.
 - PostgreSQL summary db stats: tuples - how much tuples inserted/deleted/updated/fetched/returned.
 - PostgreSQL transactions - max execution time for active/idle/waiting/prepared transactions.
+- PostgreSQL uptime - cache hit ratio and uptime.
 - PostgerSQL write-ahead log - information about amount of WAL write and WAL segments count.
 - PostgreSQL database size - per-database graph with database size.
 - PostgreSQL table read stat - information about how much block of table or index readden from disk or cache (per-table).

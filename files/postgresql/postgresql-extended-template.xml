@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-08-21T09:04:36Z</date>
+    <date>2014-08-21T09:14:27Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -863,48 +863,6 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>PostgreSQL bgwriter: required checkpoints ratio</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>pgsql.bgwriter.checkpoints_req_ratio[{$PG_CONNINFO}]</key>
-                    <delay>3600</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>0</value_type>
-                    <allowed_hosts/>
-                    <units>%</units>
-                    <delta>2</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>PostgreSQL</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
                     <name>PostgreSQL bgwriter: sync time</name>
                     <type>0</type>
                     <snmp_community/>
@@ -1204,7 +1162,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>pgsql.setting[{$PG_CONNINFO},synchronous_commit]</key>
+                    <key>pgsql.setting[{$PG_CONNINFO},fsync]</key>
                     <delay>21600</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -1231,7 +1189,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT</description>
+                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-FSYNC</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1288,7 +1246,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>pgsql.setting[{$PG_CONNINFO},fsync]</key>
+                    <key>pgsql.setting[{$PG_CONNINFO},synchronous_commit]</key>
                     <delay>21600</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -1315,7 +1273,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-FSYNC</description>
+                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -3726,8 +3684,8 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <value>90</value>
                 </macro>
                 <macro>
-                    <macro>{$PG_CHECKPOINTS_REQ_RATIO}</macro>
-                    <value>2</value>
+                    <macro>{$PG_CHECKPOINTS_REQ_THRESHOLD}</macro>
+                    <value>5</value>
                 </macro>
                 <macro>
                     <macro>{$PG_CONFLICTS_THRESHOLD}</macro>
@@ -3858,7 +3816,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.bgwriter.checkpoints_req_ratio[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_RATIO}</expression>
+            <expression>{pgCayenne-Template:pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
             <name>PostgreSQL required checkpoints occurs to frequently on {HOSTNAME}</name>
             <url/>
             <status>0</status>
