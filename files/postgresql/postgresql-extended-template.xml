@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-08-21T09:14:27Z</date>
+    <date>2014-08-25T06:01:20Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -539,7 +539,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>pos</units>
+                    <units>b</units>
                     <delta>2</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -559,7 +559,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>WAL write position, high number tells about high amount of write operations in database.</description>
+                    <description>WAL write in bytes,.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -572,7 +572,7 @@
                     <name>PostgreSQL bgwriter: buffers allocated</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
+                    <multiplier>1</multiplier>
                     <snmp_oid/>
                     <key>pgsql.bgwriter.buffers_alloc[{$PG_CONNINFO}]</key>
                     <delay>600</delay>
@@ -581,7 +581,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>buffers/s</units>
+                    <units>b</units>
                     <delta>1</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -590,7 +590,7 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
+                    <formula>8192</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -614,7 +614,7 @@
                     <name>PostgreSQL bgwriter: buffers written by the bgwriter</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
+                    <multiplier>1</multiplier>
                     <snmp_oid/>
                     <key>pgsql.bgwriter.buffers_clean[{$PG_CONNINFO}]</key>
                     <delay>600</delay>
@@ -623,7 +623,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>buffers/s</units>
+                    <units>b</units>
                     <delta>1</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -632,7 +632,7 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
+                    <formula>8192</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -656,7 +656,7 @@
                     <name>PostgreSQL bgwriter: buffers written directly by a backend</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
+                    <multiplier>1</multiplier>
                     <snmp_oid/>
                     <key>pgsql.bgwriter.buffers_backend[{$PG_CONNINFO}]</key>
                     <delay>600</delay>
@@ -665,7 +665,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>buffers/s</units>
+                    <units>b</units>
                     <delta>1</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -674,7 +674,7 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
+                    <formula>8192</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -698,7 +698,7 @@
                     <name>PostgreSQL bgwriter: buffers written during checkpoints</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
+                    <multiplier>1</multiplier>
                     <snmp_oid/>
                     <key>pgsql.bgwriter.buffers_checkpoint[{$PG_CONNINFO}]</key>
                     <delay>600</delay>
@@ -707,7 +707,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>buffers/s</units>
+                    <units>b</units>
                     <delta>1</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -716,7 +716,7 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
+                    <formula>8192</formula>
                     <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
@@ -2268,7 +2268,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>{#TABLENAME}:^public.(products|customers)$</filter>
+                    <filter>{#TABLENAME}:^public.(products|customers|sessions)$</filter>
                     <lifetime>1</lifetime>
                     <description>PostgreSQL tables discovery. Use regular expressions to configure search.&#13;
 Disabled by default because may add too many items.</description>
@@ -2391,6 +2391,132 @@ Disabled by default because may add too many items.</description>
                             <privatekey/>
                             <port/>
                             <description>PostgreSQL single table size.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>PostgreSQL</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PostgreSQL table {#TABLENAME} stat: analyzes</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>pgsql.table.stat.analyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                            <delay>600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>2</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Number of analyze operations performed on this table.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>PostgreSQL</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PostgreSQL table {#TABLENAME} stat: autoanalyzes</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>pgsql.table.stat.autoanalyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                            <delay>600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>2</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Number of autoanalyze operations performed on this table.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>PostgreSQL</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PostgreSQL table {#TABLENAME} stat: autovacuums</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>pgsql.table.stat.autovacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                            <delay>600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>2</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Number of autovacuum operations performed on this table.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3155,9 +3281,119 @@ Disabled by default because may add too many items.</description>
                             </applications>
                             <valuemap/>
                         </item_prototype>
+                        <item_prototype>
+                            <name>PostgreSQL table {#TABLENAME} stat: vacuums</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>pgsql.table.stat.vacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                            <delay>600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>2</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Number of vacuum operations performed on this table.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>PostgreSQL</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
                     <graph_prototypes>
+                        <graph_prototype>
+                            <name>PostgreSQL table {#TABLENAME} maintenance</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>0000CC</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>pgCayenne-Template</host>
+                                        <key>pgsql.table.stat.autoanalyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00CC00</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>pgCayenne-Template</host>
+                                        <key>pgsql.table.stat.analyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>CC0000</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>pgCayenne-Template</host>
+                                        <key>pgsql.table.stat.autovacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>CCCC00</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>pgCayenne-Template</host>
+                                        <key>pgsql.table.stat.vacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
                         <graph_prototype>
                             <name>PostgreSQL table {#TABLENAME} read stats</name>
                             <width>900</width>
@@ -3388,24 +3624,12 @@ Disabled by default because may add too many items.</description>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
                                     <color>000000</color>
-                                    <yaxisside>1</yaxisside>
+                                    <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>pgCayenne-Template</host>
                                         <key>pgsql.table.stat.seq_scan[{$PG_CONNINFO},{#TABLENAME}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00CC00</color>
-                                    <yaxisside>1</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>pgCayenne-Template</host>
-                                        <key>pgsql.table.stat.idx_scan[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -3430,6 +3654,18 @@ Disabled by default because may add too many items.</description>
                                     <item>
                                         <host>pgCayenne-Template</host>
                                         <key>pgsql.table.stat.idx_tup_fetch[{$PG_CONNINFO},{#TABLENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00CC00</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>pgCayenne-Template</host>
+                                        <key>pgsql.table.stat.idx_scan[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -3533,7 +3769,7 @@ Disabled by default because may add too many items.</description>
                             <history>7</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>b</units>
                             <delta>0</delta>
