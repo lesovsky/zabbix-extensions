@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-08-29T10:25:17Z</date>
+    <date>2014-09-15T09:38:14Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -238,7 +238,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[postgres]</key>
+                    <key>proc.num[{$PG_PROCESS_NAME}]</key>
                     <delay>30</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -4015,6 +4015,10 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <value>1000</value>
                 </macro>
                 <macro>
+                    <macro>{$PG_PROCESS_NAME}</macro>
+                    <value>postgres</value>
+                </macro>
+                <macro>
                     <macro>{$PG_SR_LAG_BYTE}</macro>
                     <value>50000000</value>
                 </macro>
@@ -4127,7 +4131,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:proc.num[postgres].last()}=0</expression>
+            <expression>{pgCayenne-Template:proc.num[{$PG_PROCESS_NAME}].last()}=0</expression>
             <name>PostgreSQL service not running on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -4489,7 +4493,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             </graph_items>
         </graph>
         <graph>
-            <name>PostgreSQL service responce</name>
+            <name>PostgreSQL service response</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
