@@ -10,7 +10,8 @@ megacli=$(which megacli)
 data_tmp="/run/megacli-raid-data-harvester.tmp"
 data_out="/run/megacli-raid-data-harvester.out"
 all_keys='/run/keys'
-zbx_server=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
+zbx_server=$(grep ^Server= /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
+zbx_hostname=$(grep ^Hostname= /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
 zbx_data='/run/zabbix-sender-megacli-raid-data.in'
 adp_list=$(/usr/libexec/zabbix-extensions/scripts/megacli-adp-discovery.sh raw)
 ld_list=$(/usr/libexec/zabbix-extensions/scripts/megacli-ld-discovery.sh raw)
@@ -78,83 +79,83 @@ cat $all_keys | while read key; do
   if [[ "$key" == *megacli.adp.name* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -m1 -w "Product Name" |cut -d: -f2)
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.ld.degraded* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -A1 -m1 -w "Virtual Drives" |grep -w "Degraded" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.ld.offline* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -A2 -m1 -w "Virtual Drives" |grep -w "Offline" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.total* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -A1 -m1 -w "Physical Devices" |grep -w "Disks" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.critical* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -A2 -m1 -w "Physical Devices" |grep -w "Critical Disks" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.failed* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -A3 -m1 -w "Physical Devices" |grep -w "Failed Disks" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.mem.err* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -m1 -w "Memory Correctable Errors" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.mem.unerr* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d, -f1)
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -m1 -w "Memory Uncorrectable Errors" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.ld.state* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      value=$(sed -n -e "/ld begin $adp $enc/,/ld end $adp $enc/p" $data_out |grep -m1 -w "^State" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.media_error* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Media Error Count:" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.other_error* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Other Error Count:" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.pred_failure* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Predictive Failure Count:" |cut -d: -f2 |tr -d " ")
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.state* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Firmware state:" |cut -d" " -f3 |tr -d ,)
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   if [[ "$key" == *megacli.pd.temperature* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Drive Temperature" |awk '{print $3}' |grep -oE '[0-9]+')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
   fi
   done
 
