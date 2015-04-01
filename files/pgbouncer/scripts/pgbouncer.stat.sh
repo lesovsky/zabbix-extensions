@@ -31,28 +31,28 @@ case "$PARAM" in
         $PSQL $conn_param -c "show stats" |grep -w $2 |cut -d: -f9
 ;;
 'cl_active' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f3
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f3
 ;;
 'cl_waiting' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f4
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f4
 ;;
 'sv_active' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f5
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f5
 ;;
 'sv_idle' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f6
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f6
 ;;
 'sv_used' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f7
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f7
 ;;
 'sv_tested' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f8
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f8
 ;;
 'sv_login' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f9
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f9
 ;;
 'maxwait' )
-        $PSQL $conn_param -c "show pools" |grep -w $2 |cut -d: -f10
+        $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f10
 ;;
 'free_clients' )
         $PSQL $conn_param -c "show lists" |grep -w free_clients |cut -d: -f2
