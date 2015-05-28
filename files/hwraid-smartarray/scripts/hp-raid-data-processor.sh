@@ -9,7 +9,7 @@ hpacucli=$(which hpacucli)
 data_tmp="/tmp/hp-raid-data-harvester.tmp"
 data_out="/tmp/hp-raid-data-harvester.out"
 all_keys='/tmp/keys'
-zbx_server=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2 |cut -d, -f1)
+zbx_server=$(grep ^Server= /etc/zabbix/zabbix_agentd.conf |cut -d= -f2 |cut -d, -f1)
 zbx_data='/tmp/zabbix-sender-hp-raid-data.in'
 ctrl_list=$(${hpacucli} ctrl all show |grep -oE 'Slot [0-9]+' |awk '{print $2}' |xargs echo)
 
