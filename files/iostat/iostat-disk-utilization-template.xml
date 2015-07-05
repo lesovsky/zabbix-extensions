@@ -269,14 +269,14 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>iostat.metric[{#HARDDISK},rkb/s]</key>
+                            <key>iostat.metric[{#HARDDISK},rkB/s]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>kb/s</units>
+                            <units>kB/s</units>
                             <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -563,14 +563,14 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>iostat.metric[{#HARDDISK},wkb/s]</key>
+                            <key>iostat.metric[{#HARDDISK},wkB/s]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>kb/s</units>
+                            <units>kB/s</units>
                             <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -773,7 +773,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Iostat-Disk-Utilization-Template</host>
-                                        <key>iostat.metric[{#HARDDISK},wkb/s]</key>
+                                        <key>iostat.metric[{#HARDDISK},wkB/s]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -785,7 +785,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Iostat-Disk-Utilization-Template</host>
-                                        <key>iostat.metric[{#HARDDISK},rkb/s]</key>
+                                        <key>iostat.metric[{#HARDDISK},rkB/s]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
