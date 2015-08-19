@@ -473,7 +473,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>{#LD}:</filter>
+                    <filter>{#PD}:</filter>
                     <lifetime>1</lifetime>
                     <description/>
                     <item_prototypes>
