@@ -1,0 +1,27 @@
+
+module zabbix-postqueue-local 1.0;
+
+require {
+        type postfix_etc_t;
+        type kernel_t;
+        type postfix_public_t;
+        type postfix_postqueue_exec_t;
+        type devlog_t;
+        type zabbix_agent_t;
+        type postfix_master_t;
+        class sock_file write;
+        class unix_stream_socket connectto;
+        class unix_dgram_socket { create connect sendto };
+        class file { read execute open execute_no_trans };
+}
+
+#============= zabbix_agent_t ==============
+allow zabbix_agent_t devlog_t:sock_file write;
+allow zabbix_agent_t kernel_t:unix_dgram_socket sendto;
+allow zabbix_agent_t postfix_etc_t:file read;
+allow zabbix_agent_t postfix_etc_t:file open;
+allow zabbix_agent_t postfix_master_t:unix_stream_socket connectto;
+allow zabbix_agent_t postfix_postqueue_exec_t:file { execute execute_no_trans };
+allow zabbix_agent_t postfix_public_t:sock_file write;
+allow zabbix_agent_t self:unix_dgram_socket connect;
+allow zabbix_agent_t self:unix_dgram_socket create;
