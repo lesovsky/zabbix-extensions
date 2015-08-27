@@ -5,7 +5,7 @@ postfix-minimal-template.xml needs to be installed under:
 
     Configuration -> Templates -> Import
 
-postfix.conf goes to:
+userparameter_postfix.conf goes to:
 
     /etc/zabbix/zabbix_agentd.d/
 
