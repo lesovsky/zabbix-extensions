@@ -120,7 +120,7 @@
         </trigger>
         <trigger>
             <expression>{Postfix-Minimal-Template:mail.queue.count(#3,5000,&quot;gt&quot;)}</expression>
-            <name>To many requests in mail queue on {HOSTNAME} (queue={ITEM.LASTVALUE})</name>
+            <name>Too many requests in mail queue on {HOSTNAME} (queue={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
