@@ -24,10 +24,10 @@ case "$3" in
 "w/s")
 	NUMBER=5
 ;;
-"rkb/s")
+"rkB/s")
 	NUMBER=6
 ;;
-"wkb/s")
+"wkB/s")
 	NUMBER=7
 ;;
 "avgrq-sz")
