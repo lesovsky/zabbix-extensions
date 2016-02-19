@@ -5,7 +5,7 @@
 YUM_RESULT=/tmp/yum-security.out
 ZBX_DATA=/tmp/zabbix-sender-yum-data.in
 TOTAL_UPDATES=$(yum check-update -q --errorlevel=0 |wc -l)
-ZBX_SERVER=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2)
+ZBX_SERVER=$(egrep ^ServerActive /etc/zabbix/zabbix_agentd.conf | cut -d = -f 2)
 
 yum list-security -q --errorlevel=0 |awk '{print $2}' |sort |uniq -c > /tmp/yum-bugs
 
