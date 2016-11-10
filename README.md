@@ -1,5 +1,8 @@
 Zabbix Extensions that extends Zabbix monitoring facilities.
 
+Unfortunately, these scripts aren't supported. I don't work with zabbix and I can't develop new features or fix issues. 
+All existing issues are suspended, but if you have pull-requests I will accept them.
+
 --
 Features:
 
