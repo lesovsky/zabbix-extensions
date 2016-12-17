@@ -60,7 +60,7 @@ echo -n > $zbx_data
 # формируем список ключей для zabbix
 for a in $adp_list; 
   do
-    if grep -Fxq 'Controller Battery' $data_out
+    if grep -Fq 'Controller Battery' $data_out
     then
       echo -n -e "adaptec.adp.status[$a]\nadaptec.adp.name[$a]\nadaptec.adp.temp[$a]\nadaptec.adp.ld_total[$a]\nadaptec.adp.ld_failed[$a]\nadaptec.adp.ld_degraded[$a]\nadaptec.bbu.status[$a]\n";
     else
