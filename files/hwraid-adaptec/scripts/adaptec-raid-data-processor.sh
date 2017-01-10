@@ -9,7 +9,8 @@ arcconf=$(which arcconf)
 data_tmp="/run/adaptec-raid-data-harvester.tmp"
 data_out="/run/adaptec-raid-data-harvester.out"
 all_keys='/run/keys'
-zbx_server=$(grep Server /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
+zbx_servers=$(grep ^Server\= /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|sed 's/,/ /')
+zbx_hostname=$(grep ^Hostname\= /etc/zabbix/zabbix_agentd.conf |cut -d= -f2|cut -d, -f1)
 zbx_data='/run/zabbix-sender-adaptec-raid-data.in'
 adp_list=$(/usr/libexec/zabbix-extensions/scripts/adaptec-adp-discovery.sh raw)
 ld_list=$(/usr/libexec/zabbix-extensions/scripts/adaptec-ld-discovery.sh raw)
@@ -59,7 +60,12 @@ echo -n > $zbx_data
 # формируем список ключей для zabbix
 for a in $adp_list; 
   do
-    echo -n -e "adaptec.adp.status[$a]\nadaptec.adp.name[$a]\nadaptec.adp.temp[$a]\nadaptec.adp.ld_total[$a]\nadaptec.adp.ld_failed[$a]\nadaptec.adp.ld_degraded[$a]\nadaptec.bbu.status[$a]\n"; 
+    if grep -Fq 'Controller Battery' $data_out
+    then
+      echo -n -e "adaptec.adp.status[$a]\nadaptec.adp.name[$a]\nadaptec.adp.temp[$a]\nadaptec.adp.ld_total[$a]\nadaptec.adp.ld_failed[$a]\nadaptec.adp.ld_degraded[$a]\nadaptec.bbu.status[$a]\n";
+    else
+      echo -n -e "adaptec.adp.status[$a]\nadaptec.adp.name[$a]\nadaptec.adp.temp[$a]\nadaptec.adp.ld_total[$a]\nadaptec.adp.ld_failed[$a]\nadaptec.adp.ld_degraded[$a]\n";
+    fi
   done >> $all_keys
 
 for l in $ld_list;
@@ -76,50 +82,51 @@ cat $all_keys | while read key; do
   if [[ "$key" == *adaptec.adp.status* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -w "Controller Status" |awk '{print $4}')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.adp.name* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -w "Controller Model" |awk -F: '{print $2}')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.adp.temp* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -wE "[ ]+Temperature[ ]+" |awk '{print $3}')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.adp.ld_total* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -w "Logical devices/Failed/Degraded" |cut -d: -f2 |tr -d ' ' |cut -d/ -f1)
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.adp.ld_failed* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -w "Logical devices/Failed/Degraded" |cut -d: -f2 |tr -d ' ' |cut -d/ -f2)
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.adp.ld_degraded* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |grep -w "Logical devices/Failed/Degraded" |cut -d: -f2 |tr -d ' ' |cut -d/ -f3)
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.bbu.status* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\])
      value=$(sed -n -e "/adp begin $adp/,/adp end $adp/p" $data_out |sed -n -e '/Controller Battery Information/,/Status/p' |grep -w Status |cut -d: -f2 |tr -d ' ')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.ld.status* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      ld=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      value=$(sed -n -e "/ld begin $adp $ld/,/ld end $adp $ld/p" $data_out |grep -w "Status of logical device" |cut -d: -f2 |tr -d ' ')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
   if [[ "$key" == *adaptec.pd.status* ]]; then
      adp=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f1)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      value=$(sed -n -e "/pd begin $adp $pd/,/ld end $adp $pd/p" $data_out |sed -n -e "/Device #$pd/,/Device #/p" |grep -m1 -wE '[ ]+State[ ]+' |cut -d: -f2 |tr -d ' ')
-     echo "$(hostname) $key $value" >> $zbx_data
+     echo "$zbx_hostname $key $value" >> $zbx_data
   fi
 done
 
-zabbix_sender -z $zbx_server -i $zbx_data &> /dev/null
+for zbx_server in $zbx_servers ; do zabbix_sender -z $zbx_server -i $zbx_data > /dev/null 2>&1 ; done
+
