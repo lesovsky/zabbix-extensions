@@ -13,22 +13,24 @@ username=$(head -n 1 ~zabbix/.pgpass |cut -d: -f4)
 dbname="pgbouncer"
 PARAM="$1"
 
+IFS=':'; arr_poolname=($2); unset IFS;
+
 if [ '*' = "$hostname" ]; then hostname="127.0.0.1"; fi
 
 conn_param="-qAtX -F: -h $hostname -p $port -U $username $dbname"
 
 case "$PARAM" in
 'avg_req' )
-        $PSQL $conn_param -c "show stats" |grep -w $2 |cut -d: -f6
+        $PSQL $conn_param -c "show stats" |grep -w ${arr_poolname[0]} |cut -d: -f6
 ;;
 'avg_recv' )
-        $PSQL $conn_param -c "show stats" |grep -w $2 |cut -d: -f7
+        $PSQL $conn_param -c "show stats" |grep -w ${arr_poolname[0]} |cut -d: -f7
 ;;
 'avg_sent' )
-        $PSQL $conn_param -c "show stats" |grep -w $2 |cut -d: -f8
+        $PSQL $conn_param -c "show stats" |grep -w ${arr_poolname[0]} |cut -d: -f8
 ;;
 'avg_query' )
-        $PSQL $conn_param -c "show stats" |grep -w $2 |cut -d: -f9
+        $PSQL $conn_param -c "show stats" |grep -w ${arr_poolname[0]} |cut -d: -f9
 ;;
 'cl_active' )
         $PSQL $conn_param -c "show pools" |grep -w ^$2 |cut -d: -f3
