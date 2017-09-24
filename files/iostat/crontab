@@ -1,0 +1,2 @@
+# Collect data iops for zabbix
+* * * * * root /usr/libexec/zabbix-extensions/scripts/iostat-collect.sh /tmp/iostat.out 60
