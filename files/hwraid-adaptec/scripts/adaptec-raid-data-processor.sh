@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Author:       Lesovsky A.V.
-# Description:  Gathering available information about MegaCLI supported devices.
+# Description:  Gathering available information about Adaptec supported devices.
 # Description:  Analyze information and send data to zabbix server.
 
 PATH="/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/bin"
