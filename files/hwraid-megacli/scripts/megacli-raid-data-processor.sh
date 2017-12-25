@@ -155,7 +155,7 @@ cat $all_keys | while read key; do
      enc=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f2)
      pd=$(echo $key |grep -o '\[.*\]' |tr -d \[\] |cut -d: -f3)
      value=$(sed -n -e "/pd begin $adp $enc $pd/,/ld end $adp $enc $pd/p" $data_out |grep -m1 -w "^Drive Temperature" |awk '{print $3}' |grep -oE '[0-9]+')
-     echo "\"$zbx_hostname\" $key $value" >> $zbx_data
+     echo "\"$zbx_hostname\" $key ${value:-0}" >> $zbx_data
   fi
   done
 
