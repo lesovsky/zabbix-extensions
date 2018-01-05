@@ -22,10 +22,15 @@ MODE=$1
 case "$MODE" in
 '--discovery' )
 	printf "{\n";
-	printf "\t\"data\":[\n\n";
+	printf "\t\"data\":[\n";
+	INDEX=0
 	for interface in ${physActiveIfList}
 	do
-		printf "\t{\n";
+		if [ $INDEX -gt 0 ]
+		then
+			printf ",";
+		fi
+		printf "\n\t{\n";
 		printf "\t\t\"{#PHYS_IFNAME}\":\"$interface\"\n";
 		printf "\t},\n";
 	done
