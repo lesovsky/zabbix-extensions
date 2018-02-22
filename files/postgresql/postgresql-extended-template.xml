@@ -2199,7 +2199,7 @@
                     <trigger_prototypes>
                         <trigger_prototype>
                             <expression>{pgCayenne-Template:pgsql.db.size[{$PG_CONNINFO},{#DBNAME}].last()}&gt;{$PG_DATABASE_SIZE_THRESHOLD}</expression>
-                            <name>PostgreSQL database {#DBNAME} to large on {HOSTNAME} (size={ITEM.LASTVALUE})}</name>
+                            <name>PostgreSQL database {#DBNAME} too large on {HOSTNAME} (size={ITEM.LASTVALUE})}</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -3890,7 +3890,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <trigger_prototypes>
                         <trigger_prototype>
                             <expression>{pgCayenne-Template:icmppingloss[{#HOTSTANDBY},10,100,,].last()}&gt;{$PG_SR_PACKET_LOSS}</expression>
-                            <name>PostgreSQL packet loss between {HOSTNAME} and {#HOTSTANDBY} to high ({ITEM.LASTVALUE})</name>
+                            <name>PostgreSQL packet loss between {HOSTNAME} and {#HOTSTANDBY} too high ({ITEM.LASTVALUE})</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -3899,7 +3899,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{pgCayenne-Template:pgsql.streaming.lag.seconds[{$PG_CONNINFO_STANDBY},{#HOTSTANDBY}].last()}&gt;{$PG_SR_LAG_SEC}</expression>
-                            <name>PostgreSQL streaming lag between {HOSTNAME} and {#HOTSTANDBY} to high ({ITEM.LASTVALUE})</name>
+                            <name>PostgreSQL streaming lag between {HOSTNAME} and {#HOTSTANDBY} too high ({ITEM.LASTVALUE})</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -3908,7 +3908,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{pgCayenne-Template:pgsql.streaming.lag.bytes[{$PG_CONNINFO},{#HOTSTANDBY}].last()}&gt;{$PG_SR_LAG_BYTE}</expression>
-                            <name>PostgreSQL streaming lag between {HOSTNAME} and {#HOTSTANDBY} to high ({ITEM.LASTVALUE})</name>
+                            <name>PostgreSQL streaming lag between {HOSTNAME} and {#HOTSTANDBY} too high ({ITEM.LASTVALUE})</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -4042,7 +4042,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
     <triggers>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.transactions.active[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
-            <name>PostgreSQL active transaction to long on {HOSTNAME} (time={ITEM.LASTVALUE})</name>
+            <name>PostgreSQL active transaction too long on {HOSTNAME} (time={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4072,7 +4072,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.connections.idle_in_transaction[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_IDLE_IN_TRANSACTION}</expression>
-            <name>PostgreSQL idle in transaction connections to high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
+            <name>PostgreSQL idle in transaction connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4082,7 +4082,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.transactions.idle[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
-            <name>PostgreSQL idle transaction to long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
+            <name>PostgreSQL idle transaction too long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4092,7 +4092,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.connections.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_WAITING}</expression>
-            <name>PostgreSQL number of waiting connections to high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
+            <name>PostgreSQL number of waiting connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4112,7 +4112,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
-            <name>PostgreSQL required checkpoints occurs to frequently on {HOSTNAME}</name>
+            <name>PostgreSQL required checkpoints occurs too frequently on {HOSTNAME}</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4122,7 +4122,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.ping[{$PG_CONNINFO}].last()}&gt;{$PG_PING_THRESHOLD_MS}</expression>
-            <name>PostgreSQL response to long on {HOSTNAME} ({ITEM.LASTVALUE}</name>
+            <name>PostgreSQL response too long on {HOSTNAME} ({ITEM.LASTVALUE}</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4152,7 +4152,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.connections.total_pct[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_TOTAL_PCT}</expression>
-            <name>PostgreSQL total number of connections to high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
+            <name>PostgreSQL total number of connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -4162,7 +4162,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
         </trigger>
         <trigger>
             <expression>{pgCayenne-Template:pgsql.transactions.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
-            <name>PostgreSQL waiting transaction to long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
+            <name>PostgreSQL waiting transaction too long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
