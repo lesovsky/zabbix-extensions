@@ -12,7 +12,7 @@ print_usage() {
 [[ $(which ethtool) ]] || { echo "FATAL: ethtool not found."; exit 1; }
 [[ -n $@ ]] || { print_usage; exit 1; }
 
-physIfList=$(for interface in $(ls --color=never -d /sys/devices/pci*/*/*/net/*/); do basename $interface; done)
+physIfList=$(find /sys/class/net -type l -not -lname '*virtual*' -printf '%f\n')
 physActiveIfList=$(for interface in $physIfList; do 
 	[[ -e /sys/class/net/$interface/operstate ]] && echo $interface $(cat /sys/class/net/$interface/operstate); 
 done |grep -w up |cut -d' ' -f1)
