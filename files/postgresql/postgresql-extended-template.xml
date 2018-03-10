@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-09-15T09:38:14Z</date>
+    <date>2018-03-10T02:00:00Z</date>
     <groups>
         <group>
-            <name>Templates</name>
+            <name>Templates/Databases</name>
         </group>
     </groups>
     <templates>
         <template>
-            <template>pgCayenne-Template</template>
-            <name>pgCayenne-Template</name>
+            <template>Template DB PostgreSQL</template>
+            <name>Template DB PostgreSQL</name>
+            <description>Template providing PostgreSQL monitoring (part of https://github.com/lesovsky/zabbix-extensions). Template was formerly known as pgCayenne.</description>
             <groups>
                 <group>
-                    <name>Templates</name>
+                    <name>Templates/Databases</name>
                 </group>
             </groups>
             <applications>
@@ -2198,7 +2199,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{pgCayenne-Template:pgsql.db.size[{$PG_CONNINFO},{#DBNAME}].last()}&gt;{$PG_DATABASE_SIZE_THRESHOLD}</expression>
+                            <expression>{Template DB PostgreSQL:pgsql.db.size[{$PG_CONNINFO},{#DBNAME}].last()}&gt;{$PG_DATABASE_SIZE_THRESHOLD}</expression>
                             <name>PostgreSQL database {#DBNAME} too large on {HOSTNAME} (size={ITEM.LASTVALUE})}</name>
                             <url/>
                             <status>0</status>
@@ -2234,7 +2235,7 @@
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.db.size[{$PG_CONNINFO},{#DBNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -3352,7 +3353,7 @@ Disabled by default because may add too many items.</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.table.stat.autoanalyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
@@ -3364,7 +3365,7 @@ Disabled by default because may add too many items.</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.table.stat.analyze_count[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
@@ -3376,7 +3377,7 @@ Disabled by default because may add too many items.</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.table.stat.autovacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
@@ -3388,7 +3389,7 @@ Disabled by default because may add too many items.</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.table.stat.vacuum_count[{$PG_CONNINFO},{#TABLENAME}]</key>
                                     </item>
                                 </graph_item>
@@ -3943,7 +3944,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.streaming.lag.bytes[{$PG_CONNINFO},{#HOTSTANDBY}]</key>
                                     </item>
                                 </graph_item>
@@ -3955,7 +3956,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>pgCayenne-Template</host>
+                                        <host>Template DB PostgreSQL</host>
                                         <key>pgsql.streaming.lag.seconds[{$PG_CONNINFO_STANDBY},{#HOTSTANDBY}]</key>
                                     </item>
                                 </graph_item>
@@ -4041,7 +4042,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
     </templates>
     <triggers>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.transactions.active[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.transactions.active[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
             <name>PostgreSQL active transaction too long on {HOSTNAME} (time={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4051,7 +4052,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.cache.hit[{$PG_CONNINFO}].last()}&lt;{$PG_CACHE_HIT_RATIO}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.cache.hit[{$PG_CONNINFO}].last()}&lt;{$PG_CACHE_HIT_RATIO}</expression>
             <name>PostgreSQL cache hit ratio too low on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4061,7 +4062,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}].last()}&gt;{$PG_DEADLOCKS_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}].last()}&gt;{$PG_DEADLOCKS_THRESHOLD}</expression>
             <name>PostgreSQL deadlock occured on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -4071,7 +4072,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.connections.idle_in_transaction[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_IDLE_IN_TRANSACTION}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.idle_in_transaction[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_IDLE_IN_TRANSACTION}</expression>
             <name>PostgreSQL idle in transaction connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4081,7 +4082,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.transactions.idle[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.transactions.idle[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
             <name>PostgreSQL idle transaction too long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4091,7 +4092,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.connections.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_WAITING}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_WAITING}</expression>
             <name>PostgreSQL number of waiting connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4101,7 +4102,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}].last()}&gt;{$PG_CONFLICTS_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}].last()}&gt;{$PG_CONFLICTS_THRESHOLD}</expression>
             <name>PostgreSQL recovery conflict occured on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -4111,7 +4112,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
             <name>PostgreSQL required checkpoints occurs too frequently on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -4121,7 +4122,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.ping[{$PG_CONNINFO}].last()}&gt;{$PG_PING_THRESHOLD_MS}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.ping[{$PG_CONNINFO}].last()}&gt;{$PG_PING_THRESHOLD_MS}</expression>
             <name>PostgreSQL response too long on {HOSTNAME} ({ITEM.LASTVALUE}</name>
             <url/>
             <status>0</status>
@@ -4131,7 +4132,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:proc.num[{$PG_PROCESS_NAME}].last()}=0</expression>
+            <expression>{Template DB PostgreSQL:proc.num[{$PG_PROCESS_NAME}].last()}=0</expression>
             <name>PostgreSQL service not running on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -4141,7 +4142,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.uptime[{$PG_CONNINFO}].last()}&lt;{$PG_UPTIME_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.uptime[{$PG_CONNINFO}].last()}&lt;{$PG_UPTIME_THRESHOLD}</expression>
             <name>PostgreSQL service was restarted on {HOSTNAME} (uptime={ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4151,7 +4152,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.connections.total_pct[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_TOTAL_PCT}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.total_pct[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_TOTAL_PCT}</expression>
             <name>PostgreSQL total number of connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4161,7 +4162,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{pgCayenne-Template:pgsql.transactions.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.transactions.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_LONG_QUERY_THRESHOLD}</expression>
             <name>PostgreSQL waiting transaction too long on {HOSTNAME} ({ITEM.LASTVALUE})</name>
             <url/>
             <status>0</status>
@@ -4198,7 +4199,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.maxwritten_clean[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4210,7 +4211,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.buffers_backend_fsync[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4222,7 +4223,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.buffers_alloc[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4234,7 +4235,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.buffers_backend[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4246,7 +4247,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.buffers_clean[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4258,7 +4259,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.buffers_checkpoint[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4290,7 +4291,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQLe</host>
                         <key>pgsql.buffercache.clear[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4302,7 +4303,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.buffercache.total[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4314,7 +4315,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.buffercache.used[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4326,7 +4327,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.buffercache.dirty[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4358,7 +4359,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.checkpoints_timed[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4370,7 +4371,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.checkpoint_sync_time[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4382,7 +4383,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.checkpoint_write_time[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4394,7 +4395,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4426,7 +4427,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.active[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4438,7 +4439,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.waiting[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4450,7 +4451,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.total_pct[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4462,7 +4463,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.total[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4474,7 +4475,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.idle[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4486,7 +4487,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.connections.idle_in_transaction[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4518,7 +4519,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.ping[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4530,7 +4531,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.pgstatstatements.avg_query_time[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4562,7 +4563,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.blks_read[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4574,7 +4575,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.blks_hit[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4606,7 +4607,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4618,7 +4619,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4630,7 +4631,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.xact_rollback[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4642,7 +4643,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.xact_commit[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4674,7 +4675,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.temp_bytes[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4686,7 +4687,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.temp_files[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4718,7 +4719,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.tup_updated[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4730,7 +4731,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.tup_returned[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4742,7 +4743,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.tup_inserted[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4754,7 +4755,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.tup_fetched[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4766,7 +4767,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.dbstat.sum.tup_deleted[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4798,7 +4799,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.transactions.active[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4810,7 +4811,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.transactions.prepared[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4822,7 +4823,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.transactions.idle[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4834,7 +4835,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.transactions.waiting[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4866,7 +4867,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.cache.hit[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4878,7 +4879,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.uptime[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4910,7 +4911,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.wal.write[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
@@ -4922,7 +4923,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>pgCayenne-Template</host>
+                        <host>Template DB PostgreSQL</host>
                         <key>pgsql.wal.count[{$PG_CONNINFO}]</key>
                     </item>
                 </graph_item>
