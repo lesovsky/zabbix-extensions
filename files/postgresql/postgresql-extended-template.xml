@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-03-10T03:40:00Z</date>
+    <date>2018-03-10T03:40:01Z</date>
     <groups>
         <group>
             <name>Templates/Databases</name>
@@ -28,17 +28,17 @@
             <items>
                 <item>
                     <name>PostgreSQL bgwriter: buffers allocated</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.buffers_alloc[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.buffers_alloc</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>b</units>
+                    <units>Bps</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -65,30 +65,32 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.buffers_alloc</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
-                        <step>
-                            <type>1</type>
-                            <params>8192</params>
-                        </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: buffers written directly by a backend</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.buffers_backend[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.buffers_backend</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>b</units>
+                    <units>Bps</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -115,24 +117,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.buffers_backend</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
-                        <step>
-                            <type>1</type>
-                            <params>8192</params>
-                        </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: times a backend had to execute its own fsync</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.buffers_backend_fsync[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.buffers_backend_fsync</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -165,26 +169,32 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.buffers_backend_fsync</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: buffers written during checkpoints</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.buffers_checkpoint[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.buffers_checkpoint</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>b</units>
+                    <units>Bps</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -211,30 +221,32 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.buffers_checkpoint</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
-                        <step>
-                            <type>1</type>
-                            <params>8192</params>
-                        </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: buffers written by the bgwriter</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.buffers_clean[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.buffers_clean</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>b</units>
+                    <units>Bps</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -260,25 +272,27 @@
                     <valuemap/>
                     <logtimefmt/>
                     <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.buffers_clean</params>
+                        </step>
                         <step>
                             <type>10</type>
                             <params/>
                         </step>
-                        <step>
-                            <type>1</type>
-                            <params>8192</params>
-                        </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: required checkpoints</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.checkpoints_req</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -311,20 +325,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.checkpoints_req</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: checkpoints by timeout</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.checkpoints_timed[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.checkpoints_timed</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -357,26 +377,32 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.checkpoints_timed</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: sync time</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.checkpoint_sync_time[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.checkpoint_sync_time</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
-                    <units>ms</units>
+                    <units>s</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -403,26 +429,36 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.checkpoint_sync_time</params>
+                        </step>
+                        <step>
+                            <type>1</type>
+                            <params>0.001</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: write time</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.checkpoint_write_time[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.checkpoint_write_time</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
-                    <units>ms</units>
+                    <units>s</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -448,27 +484,37 @@
                     <valuemap/>
                     <logtimefmt/>
                     <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.checkpoint_write_time</params>
+                        </step>
+                        <step>
+                            <type>1</type>
+                            <params>0.001</params>
+                        </step>
                         <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL bgwriter: max written</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.bgwriter.maxwritten_clean[{$PG_CONNINFO}]</key>
-                    <delay>600</delay>
+                    <key>pgsql.bgwriter.maxwritten_clean</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>ms</units>
+                    <units/>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -495,10 +541,57 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.maxwritten_clean</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>PostgreSQL bgwriter (internal item)</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>pgsql.bgwriter[{$PG_CONNINFO}]</key>
+                    <delay>5m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Internal item to fetch all pg_stat_bgwriter values in a single call</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Internal Items</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
                     <jmx_endpoint/>
                     <master_item/>
                 </item>
@@ -4536,7 +4629,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}].last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.bgwriter.checkpoints_req.last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL required checkpoints occurs too frequently on {HOSTNAME}</name>
@@ -4660,7 +4753,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.buffers_alloc[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.buffers_alloc</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4672,7 +4765,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.buffers_clean[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.buffers_clean</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4684,7 +4777,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.buffers_backend[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.buffers_backend</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4696,7 +4789,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.buffers_checkpoint[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.buffers_checkpoint</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4708,7 +4801,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.maxwritten_clean[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.maxwritten_clean</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4720,7 +4813,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.buffers_backend_fsync[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.buffers_backend_fsync</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -4832,7 +4925,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.checkpoints_timed[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.checkpoints_timed</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4844,7 +4937,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.checkpoints_req[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.checkpoints_req</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4856,7 +4949,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.checkpoint_sync_time[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.checkpoint_sync_time</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -4868,7 +4961,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.bgwriter.checkpoint_write_time[{$PG_CONNINFO}]</key>
+                        <key>pgsql.bgwriter.checkpoint_write_time</key>
                     </item>
                 </graph_item>
             </graph_items>
