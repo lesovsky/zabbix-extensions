@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-03-10T03:40:01Z</date>
+    <date>2018-03-10T03:40:02Z</date>
     <groups>
         <group>
             <name>Templates/Databases</name>
@@ -1206,11 +1206,11 @@
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: blocks hit per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.blks_hit[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.blks_hit</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1243,20 +1243,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.blks_hit</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: blocks read per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.blks_read[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.blks_read</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1278,7 +1284,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Number of disk blocks read</description>
+                    <description>Number of disk blocks read per second</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1289,20 +1295,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.blks_read</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: registered conflicts</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.conflicts</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1335,20 +1347,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.conflicts</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: registered deadlocks</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.deadlocks</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1381,26 +1399,32 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.deadlocks</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: temp_bytes written</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.temp_bytes[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.temp_bytes</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>b</units>
+                    <units>B</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1427,20 +1451,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.temp_bytes</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: temp_files created</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.temp_files[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.temp_files</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1473,20 +1503,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.temp_files</params>
+                        </step>
+                        <step>
                             <type>9</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: tuples deleted per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.tup_deleted[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.tup_deleted</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1519,20 +1555,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.tup_deleted</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: tuples fetched per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.tup_fetched[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.tup_fetched</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1565,20 +1607,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.tup_fetched</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: tuples inserted per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.tup_inserted[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.tup_inserted</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1611,20 +1659,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.tup_inserted</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: tuples returned per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.tup_returned[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.tup_returned</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1657,20 +1711,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.tup_returned</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: tuples updated per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.tup_updated[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.tup_updated</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1703,20 +1763,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.tup_updated</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgresSQL dbstat: commits per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.xact_commit[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.xact_commit</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1749,20 +1815,26 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.xact_commit</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL dbstat: rollbacks per second</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.dbstat.sum.xact_rollback[{$PG_CONNINFO}]</key>
-                    <delay>120</delay>
+                    <key>pgsql.dbstat.sum.xact_rollback</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1795,10 +1867,57 @@
                     <logtimefmt/>
                     <preprocessing>
                         <step>
+                            <type>12</type>
+                            <params>$.xact_rollback</params>
+                        </step>
+                        <step>
                             <type>10</type>
                             <params/>
                         </step>
                     </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>PostgreSQL dbstat (internal item)</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>pgsql.dbstat.sum[{$PG_CONNINFO}]</key>
+                    <delay>2m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Internal item to fetch all pg_stat_database sum values in a single call</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Internal Items</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
                     <jmx_endpoint/>
                     <master_item/>
                 </item>
@@ -4549,7 +4668,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}].last()}&gt;{$PG_DEADLOCKS_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.deadlocks.last()}&gt;{$PG_DEADLOCKS_THRESHOLD}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL deadlock occured on {HOSTNAME}</name>
@@ -4613,7 +4732,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}].last()}&gt;{$PG_CONFLICTS_THRESHOLD}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.conflicts.last()}&gt;{$PG_CONFLICTS_THRESHOLD}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL recovery conflict occured on {HOSTNAME}</name>
@@ -5129,7 +5248,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.blks_hit[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.blks_hit</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5141,7 +5260,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.blks_read[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.blks_read</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -5173,7 +5292,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.xact_commit[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.xact_commit</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5185,7 +5304,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.conflicts[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.conflicts</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5197,7 +5316,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.deadlocks[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.deadlocks</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5209,7 +5328,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.xact_rollback[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.xact_rollback</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -5241,7 +5360,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.temp_bytes[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.temp_bytes</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5253,7 +5372,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.temp_files[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.temp_files</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -5285,7 +5404,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.tup_deleted[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.tup_deleted</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5297,7 +5416,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.tup_inserted[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.tup_inserted</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5309,7 +5428,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.tup_updated[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.tup_updated</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5321,7 +5440,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.tup_fetched[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.tup_fetched</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5333,7 +5452,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.dbstat.sum.tup_returned[{$PG_CONNINFO}]</key>
+                        <key>pgsql.dbstat.sum.tup_returned</key>
                     </item>
                 </graph_item>
             </graph_items>
