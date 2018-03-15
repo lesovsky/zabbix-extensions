@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-03-10T03:40:02Z</date>
+    <date>2018-03-15T03:40:00Z</date>
     <groups>
         <group>
             <name>Templates/Databases</name>
@@ -919,11 +919,11 @@
                 </item>
                 <item>
                     <name>PostgreSQL: number of active connections</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.active[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.active</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -954,17 +954,24 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.active</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL: number of idle connections</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.idle[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.idle</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -995,17 +1002,24 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.idle</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL: number of idle in transaction connections</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.idle_in_transaction[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.idle_in_transaction</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1036,9 +1050,16 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.idle_in_transaction</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL: number of prepared connections</name>
@@ -1046,7 +1067,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>pgsql.connections.prepared[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <delay>1m</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1083,11 +1104,11 @@
                 </item>
                 <item>
                     <name>PostgreSQL: total connections</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.total[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.total</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1118,17 +1139,24 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.total</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL: total connections (%)</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.total_pct[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.total_pct</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1159,17 +1187,24 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.total_pct</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL: number of waiting connections</name>
-                    <type>0</type>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.connections.waiting[{$PG_CONNINFO}]</key>
-                    <delay>60</delay>
+                    <key>pgsql.connections.waiting</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -1196,6 +1231,54 @@
                     <applications>
                         <application>
                             <name>PostgreSQL</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.waiting</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>PostgreSQL: pg_stat_activity (internal item)</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>pgsql.connections[{$PG_CONNINFO}]</key>
+                    <delay>1m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Internal item to fetch all pg_stat_activity values in a single call</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Internal Items</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -4684,7 +4767,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.connections.idle_in_transaction[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_IDLE_IN_TRANSACTION}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.idle_in_transaction.last()}&gt;{$PG_CONN_IDLE_IN_TRANSACTION}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL idle in transaction connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
@@ -4716,7 +4799,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.connections.waiting[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_WAITING}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.waiting.last()}&gt;{$PG_CONN_WAITING}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL number of waiting connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
@@ -4812,7 +4895,7 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template DB PostgreSQL:pgsql.connections.total_pct[{$PG_CONNINFO}].last()}&gt;{$PG_CONN_TOTAL_PCT}</expression>
+            <expression>{Template DB PostgreSQL:pgsql.connections.total_pct.last()}&gt;{$PG_CONN_TOTAL_PCT}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>PostgreSQL total number of connections too high on {HOSTNAME} ({ITEM.LASTVALUE})</name>
@@ -5112,7 +5195,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.total[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.total</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5124,7 +5207,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.active[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.active</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5136,7 +5219,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.idle[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.idle</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5148,7 +5231,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.idle_in_transaction[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.idle_in_transaction</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5160,7 +5243,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.total_pct[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.total_pct</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -5172,7 +5255,7 @@ Disabled by default because may add too many items.</description>
                     <type>0</type>
                     <item>
                         <host>Template DB PostgreSQL</host>
-                        <key>pgsql.connections.waiting[{$PG_CONNINFO}]</key>
+                        <key>pgsql.connections.waiting</key>
                     </item>
                 </graph_item>
             </graph_items>
