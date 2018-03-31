@@ -67,7 +67,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[blocked_clients]</key>
+                    <key>redis.stat[blocked_clients]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -106,7 +106,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[rdb_changes_since_last_save]</key>
+                    <key>redis.stat[rdb_changes_since_last_save]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -145,7 +145,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_cpu_sys_children]</key>
+                    <key>redis.stat[used_cpu_sys_children]</key>
                     <delay>60</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -184,7 +184,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_cpu_user_children]</key>
+                    <key>redis.stat[used_cpu_user_children]</key>
                     <delay>60</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -223,7 +223,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[total_commands_processed]</key>
+                    <key>redis.stat[total_commands_processed]</key>
                     <delay>60</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -262,7 +262,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[connected_clients]</key>
+                    <key>redis.stat[connected_clients]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -301,7 +301,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[connected_slaves]</key>
+                    <key>redis.stat[connected_slaves]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -340,7 +340,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[total_connections_received]</key>
+                    <key>redis.stat[total_connections_received]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -379,7 +379,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[mem_fragmentation_ratio]</key>
+                    <key>redis.stat[mem_fragmentation_ratio]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -418,7 +418,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[evicted_keys]</key>
+                    <key>redis.stat[evicted_keys]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -457,7 +457,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[expired_keys]</key>
+                    <key>redis.stat[expired_keys]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -496,7 +496,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[keyspace_hits]</key>
+                    <key>redis.stat[keyspace_hits]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -574,7 +574,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[keyspace_misses]</key>
+                    <key>redis.stat[keyspace_misses]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -613,7 +613,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[uptime_in_days]</key>
+                    <key>redis.stat[uptime_in_days]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -652,7 +652,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[uptime_in_seconds]</key>
+                    <key>redis.stat[uptime_in_seconds]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -691,7 +691,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_cpu_sys]</key>
+                    <key>redis.stat[used_cpu_sys]</key>
                     <delay>60</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -730,7 +730,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_cpu_user]</key>
+                    <key>redis.stat[used_cpu_user]</key>
                     <delay>60</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -769,7 +769,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_memory]</key>
+                    <key>redis.stat[used_memory]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -808,7 +808,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[used_memory_rss]</key>
+                    <key>redis.stat[used_memory_rss]</key>
                     <delay>120</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -847,7 +847,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>redis[redis_version]</key>
+                    <key>redis.stat[redis_version]</key>
                     <delay>86400</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -937,7 +937,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[rdb_changes_since_last_save]</key>
+                        <key>redis.stat[rdb_changes_since_last_save]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -969,7 +969,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[connected_clients]</key>
+                        <key>redis.stat[connected_clients]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -981,7 +981,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[blocked_clients]</key>
+                        <key>redis.stat[blocked_clients]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -1013,7 +1013,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[used_memory_rss]</key>
+                        <key>redis.stat[used_memory_rss]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1025,7 +1025,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[used_memory]</key>
+                        <key>redis.stat[used_memory]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -1057,7 +1057,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[total_commands_processed]</key>
+                        <key>redis.stat[total_commands_processed]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1069,7 +1069,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[total_connections_received]</key>
+                        <key>redis.stat[total_connections_received]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -1101,7 +1101,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[keyspace_misses]</key>
+                        <key>redis.stat[keyspace_misses]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1113,7 +1113,7 @@
                     <type>0</type>
                     <item>
                         <host>Redis-Extended-Template</host>
-                        <key>redis[keyspace_hits]</key>
+                        <key>redis.stat[keyspace_hits]</key>
                     </item>
                 </graph_item>
             </graph_items>
