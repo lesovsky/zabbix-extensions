@@ -4831,6 +4831,23 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Template DB PostgreSQL:pgsql.buffercache[{$PG_CONNINFO}].str(ERROR:  relation &quot;pg_buffercache&quot; does not exist)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>PostgreSQL relation &quot;pg_buffercache&quot; does not exist on {HOST.NAME}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Enable pg_buffercache extension in order to gather buffer metrics:&#13;
+https://www.postgresql.org/docs/current/static/pgbuffercache.html</description>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Template DB PostgreSQL:pgsql.bgwriter.checkpoints_req.last()}&gt;{$PG_CHECKPOINTS_REQ_THRESHOLD}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
