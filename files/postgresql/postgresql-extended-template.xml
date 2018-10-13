@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-03-15T03:40:00Z</date>
+    <date>2018-10-13T03:40:00Z</date>
     <groups>
         <group>
             <name>Templates/Databases</name>
@@ -909,6 +909,47 @@
                     <applications>
                         <application>
                             <name>PostgreSQL</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>PostgreSQL config (internal item)</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>pgsql.config[{$PG_CONNINFO}]</key>
+                    <delay>6h</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Internal item to fetch all PostgreSQL configuration details as JSON object</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Internal Items</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -2087,12 +2128,12 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>PostgreSQL config: $2</name>
-                    <type>0</type>
+                    <name>PostgreSQL config: $1</name>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>pgsql.setting[{$PG_CONNINFO},fsync]</key>
-                    <delay>21600</delay>
+                    <key>pgsql.setting[fsync]</key>
+                    <delay>0</delay>
                     <history>7d</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -2123,91 +2164,16 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.settings.fsync</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
-                </item>
-                <item>
-                    <name>PostgreSQL config: $2</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
-                    <key>pgsql.setting[{$PG_CONNINFO},full_page_writes]</key>
-                    <delay>21600</delay>
-                    <history>7d</history>
-                    <trends>0</trends>
-                    <status>0</status>
-                    <value_type>1</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-FULL-PAGE-WRITES</description>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>PostgreSQL</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                    <preprocessing/>
-                    <jmx_endpoint/>
-                    <master_item/>
-                </item>
-                <item>
-                    <name>PostgreSQL config: $2</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
-                    <key>pgsql.setting[{$PG_CONNINFO},synchronous_commit]</key>
-                    <delay>21600</delay>
-                    <history>7d</history>
-                    <trends>0</trends>
-                    <status>0</status>
-                    <value_type>1</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description>http://www.postgresql.org/docs/9.2/static/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT</description>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>PostgreSQL</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                    <preprocessing/>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <master_item>
+                        <key>pgsql.config[{$PG_CONNINFO}]</key>
+                    </master_item>
                 </item>
                 <item>
                     <name>PostgreSQL streaming replication: stand-by count</name>
@@ -4751,6 +4717,22 @@ Disabled by default because may add too many items.</description>
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Template DB PostgreSQL:pgsql.config[{$PG_CONNINFO}].diff()}=1</expression>
+            <recovery_mode>2</recovery_mode>
+            <recovery_expression/>
+            <name>PostgreSQL configuration changed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>The configuration of PostgreSQL was changed. This needs manual confirmation.</description>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Template DB PostgreSQL:pgsql.dbstat.sum.deadlocks.last()}&gt;{$PG_DEADLOCKS_THRESHOLD}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
@@ -4811,6 +4793,22 @@ Disabled by default because may add too many items.</description>
             <description/>
             <type>0</type>
             <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template DB PostgreSQL:pgsql.config[{$PG_CONNINFO}].str(&quot;\&quot;pg_buffercache\&quot;&quot;,#1)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>PostgreSQL recommended extension pg_buffercache is not installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Some items depend on the pg_buffercache extension. If you disabled those items, it's safe to disable this trigger as well</description>
+            <type>0</type>
+            <manual_close>1</manual_close>
             <dependencies/>
             <tags/>
         </trigger>
