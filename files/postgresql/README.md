@@ -15,7 +15,7 @@ It is a set of `UserParameter` for PostgreSQL monitoring, which consists of Zabb
 - low level discovery for streaming standby servers, databases, tables
 
 ## Supported versions
-- PostgreSQL version 9.3 and above
+- PostgreSQL version 9.4 and above
 - Zabbix 3.4 and newer
 
 ## Short how-to install and configure
