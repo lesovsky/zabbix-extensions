@@ -91,7 +91,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>{#HARDDISK}:^((xvd|sd|hd|vd|md)[a-z]|(nvme[0-9]+n[0-9]+))</filter>
+                    <filter>{#HARDDISK}:^((xvd|sd|hd|vd)[a-z]|md|(nvme[0-9]+n[0-9]+))</filter>
                     <lifetime>1</lifetime>
                     <description/>
                     <item_prototypes>
