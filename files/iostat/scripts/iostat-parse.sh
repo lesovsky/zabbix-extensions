@@ -54,4 +54,4 @@ case "$3" in
 *) echo ZBX_NOTSUPPORTED; exit 1 ;;
 esac
 
-grep -w $DISK $FROMFILE | tail -n +2 | tr -s ' ' |awk -v N=$NUMBER 'BEGIN {sum=0.0;count=0;} {sum=sum+$N;count=count+1;} END {printf("%.2f\n", sum/count);}'
+grep -w $DISK $FROMFILE | tail -n 1 | tr -s ' ' |awk -v N=$NUMBER '{printf("%.2f\n", $N);}'
