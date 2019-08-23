@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# суть проверки выяснить момент когда использование памяти подходит к критической границе 
-# когда кэши невозможно занять, память заполнена и система вот-вот начнет реально свопиться.
+# The aim of this check is detect the moment when memory usage is quite close to critical threshold, 
+# when caches are close to be empty and all the memory is used and system starts swapping in near time.
 
 USEDRAM=$(free |grep ^Mem|awk '{print $3}')
 USEDSWAP=$(free |grep ^Swap|awk '{print $3}')
