@@ -30,8 +30,41 @@ This is step by step instrucion of start collect this iostat metric in zabbix mo
 8. test working auto discovery zabix item for discovering new hdd partitions on server
 > zabbix_get -s 127.0.0.1 -k iostat.discovery
 
+	example
+	```
+	{
+			"data":[
+					{
+							"{#HARDDISK}":"scd0"},
+					{
+							"{#HARDDISK}":"sdb"},
+					{
+							"{#HARDDISK}":"sdc"},
+					{
+							"{#HARDDISK}":"sda"}]}
+	```
+
 9. test aveilablility collecting iostat metrics on existing hdd partition
 > zabbix_get -s 127.0.0.1 -k iostat.summary[sda]
+
+	example
+	```
+	{
+			"rrqm/s":"0.00",
+			"wrqm/s":"0.00",
+			"r/s":"0.04",
+			"w/s":"0.00",
+			"rkB/s":"0.42",
+			"wkB/s":"0.00",
+			"avgrq-sz":"4.09",
+			"avgqu-sz":"19.57",
+			"await":"0.00",
+			"r_await":"2.30",
+			"w_await":"0.00",
+			"svctm":"2.30",
+			"util":"1.78"
+	}
+	```
 
 10. register zabbix template iostat-disk-utilization-template.xml, set it for host "Zabbix server"
 (some not important items will be disable for default - you can change it for your own vision)
