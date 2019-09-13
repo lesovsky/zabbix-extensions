@@ -1,5 +1,5 @@
 For editional monitoring functionality of HDD there is usefull unilit iostat.
-It is allows to collect important metrics like: 
+It is allows to collect important metrics like:
 - coefficient of disc capacity "utilization"
 - average operations processing time "await"
 - average capacity of queue length of operations to disk deal with "average queue size"
@@ -8,7 +8,7 @@ It is allows to collect important metrics like:
 This is step by step instrucion of start collect this iostat metric in zabbix monitoring system.
 
 1. install iostat utility wich is part of sysstat library
-> # for CentOS
+> \#for CentOS <br>
 > yum install sysstat
 
 2. copy file iostat.conf in /etc/zabbix/zabbix_agent.d on server
