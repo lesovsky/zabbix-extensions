@@ -1,2 +1,2 @@
 # Collect data iops for zabbix - just execute "crontab -e" and write this line:
-* * * * * /usr/libexec/zabbix-extensions/scripts/iostat-collect.sh 58 >/dev/null 2>&1
+* * * * * /usr/libexec/zabbix-extensions/scripts/iostat-collect.sh /tmp/iostat-cron1.out 59
