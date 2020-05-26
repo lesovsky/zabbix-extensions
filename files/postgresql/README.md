@@ -89,6 +89,7 @@ If all things done correctly, we can see the response time of PostgreSQL service
  - PG_SR_LAG_BYTE - threshold in bytes for streaming replication lag between server and discovered standby servers
  - PG_SR_LAG_SEC - threshold in seconds for streaming replication lag between server and discovered standby servers
  - PG_UPTIME_THRESHOLD - threshold for service uptime
+ - PG_PROCESS_NAME - the name of the main PostgreSQL process. Usually `postgres` which is the default value. Change if your system uses a different process name (e.g. the deprecated `postmaster` alias)
 
 - add additional items into template if required
 
