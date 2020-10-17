@@ -54,7 +54,7 @@
                         <conditions>
                             <condition>
                                 <macro>{#HARDDISK}</macro>
-                                <value>^((xvd|sd|hd|vd)[a-z]|(nvme[0-9]+n[0-9]+))</value>
+                                <value>^((xvd|sd|hd|vd)[a-z]|md[0-9]+|(nvme[0-9]+n[0-9]+))</value>
                                 <operator>8</operator>
                                 <formulaid>A</formulaid>
                             </condition>
