@@ -1,7 +1,8 @@
 Zabbix Extensions that extends Zabbix monitoring facilities.
 
-**Unfortunately, these scripts aren't supported. I don't work with zabbix and I can't develop new features or fix issues. 
-All existing issues are suspended, but if you have pull-requests I will accept them.**
+**Unfortunately, most of these scripts aren't supported. If you discover issues with some or want to propose an improvement, please create a Pull-Request.**
+
+**Stephan Knauss is actively maintaining the PostgreSQL sub-section. Please file issues if you detect a problem.**
 
 --
 Features:
