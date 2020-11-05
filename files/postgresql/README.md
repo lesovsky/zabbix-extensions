@@ -67,7 +67,7 @@ host    db_production   postgres    127.0.0.1/32    trust
 
 - verify installation with `zabbix_get`
 ```
-# zabbix_get -s 127.0.0.1 -k pgsql.ping['-h 127.0.0.1 -p 5432 -U postgres -d db_production']
+# zabbix_get -s 127.0.0.1 -k pgsql.ping['-h 127.0.0.1 -p 5432 -U postgres -d postgres']
 ```
 If all things done correctly, we can see the response time of PostgreSQL service. Otherwise check all steps again and Zabbix agentd log/PostgreSQL log.
 
