@@ -49,7 +49,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},avgqu-sz]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>req</units>
                             <description>The average queue length of the requests that were issued to the device.</description>
@@ -73,7 +72,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},avgrq-sz]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>sector/request</units>
                             <description>The average size (in sectors) of the requests that were issued to the device.</description>
@@ -97,7 +95,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},await]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>ms</units>
                             <description>The average time (in milliseconds) for I/O requests issued to the device to be served. This includes the time spent by the requests in queue and the time spent servicing them.</description>
@@ -121,7 +118,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},r/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>ops</units>
                             <description>The number of read requests per second.</description>
@@ -145,7 +141,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},rkB/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>kB/s</units>
                             <description>The number of kbytes read from the device per second.</description>
@@ -169,7 +164,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},rrqm/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>rps</units>
                             <description>The number of read requests merged per second that were queued to the hard disk.</description>
@@ -193,7 +187,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},r_await]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>ms</units>
                             <description>The average time (in milliseconds) for read requests issued to the device to be served. This includes the time spent by the requests in queue and  the  time  spent servicing them.</description>
@@ -217,7 +210,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},util]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>%</units>
                             <description>Percentage of CPU time during which I/O requests were issued to the device (bandwidth utilization for the device). Device saturation  occurs  when  this  value  is close to 100%.</description>
@@ -241,7 +233,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},w/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>ops</units>
                             <description>The number of write requests per second.</description>
@@ -265,7 +256,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},wkB/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>kB/s</units>
                             <description>The number of kilobytes write to the device per second.</description>
@@ -289,7 +279,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},wrqm/s]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>rps</units>
                             <description>The number of write requests merged per second that were queued to the hard disk.</description>
@@ -313,7 +302,6 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                             <type>DEPENDENT</type>
                             <key>iostat.summary[{#HARDDISK},w_await]</key>
                             <delay>0</delay>
-                            <history>7d</history>
                             <value_type>FLOAT</value_type>
                             <units>ms</units>
                             <description>The  average time (in milliseconds) for write requests issued to the device to be served. This includes the time spent by the requests in queue and  the  time  spent servicing them.</description>
