@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-10-24T19:28:57Z</date>
+    <date>2021-10-25T20:00:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -25,6 +25,21 @@ https://github.com/lesovsky/zabbix-extensions</description>
                     <name>Iostat</name>
                 </application>
             </applications>
+            <items>
+                <item>
+                    <name>iostat summary internal item</name>
+                    <key>iostat.summary</key>
+                    <history>1h</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>internal item to store iostat summary. Discovered items read data from this item.</description>
+                    <applications>
+                        <application>
+                            <name>Iostat</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
             <discovery_rules>
                 <discovery_rule>
                     <name>Disks discovery</name>
@@ -64,7 +79,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -87,7 +102,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -110,7 +125,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -133,7 +148,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -156,7 +171,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -179,7 +194,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -202,7 +217,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -225,7 +240,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -248,7 +263,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -271,7 +286,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -294,7 +309,7 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -317,21 +332,8 @@ Adjust filters to allow all discovered devices by completely removing it or narr
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>iostat.summary[{#HARDDISK}]</key>
+                                <key>iostat.summary</key>
                             </master_item>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Disk {#HARDDISK} iostat summary</name>
-                            <key>iostat.summary[{#HARDDISK}]</key>
-                            <delay>1m</delay>
-                            <history>1h</history>
-                            <trends>0</trends>
-                            <value_type>TEXT</value_type>
-                            <applications>
-                                <application>
-                                    <name>Iostat</name>
-                                </application>
-                            </applications>
                         </item_prototype>
                     </item_prototypes>
                     <graph_prototypes>
