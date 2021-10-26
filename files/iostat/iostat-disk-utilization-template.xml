@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-10-25T20:00:00Z</date>
+    <date>2021-10-25T20:01:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -38,6 +38,41 @@ https://github.com/lesovsky/zabbix-extensions</description>
                             <name>Iostat</name>
                         </application>
                     </applications>
+                </item>
+                <item>
+                    <name>iostat last data timestamp</name>
+                    <type>DEPENDENT</type>
+                    <key>iostat.timestamp</key>
+                    <delay>0</delay>
+                    <units>unixtime</units>
+                    <description>timestamp of the last summary item</description>
+                    <applications>
+                        <application>
+                            <name>Iostat</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$..timestamp.first()</params>
+                        </step>
+                        <step>
+                            <type>JAVASCRIPT</type>
+                            <params>return Date.parse(value)/1000;</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>iostat.summary</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <expression>{fuzzytime(5m)}=0</expression>
+                            <name>Last iostat data timestamp too old</name>
+                            <opdata>Timestamp received: {ITEM.LASTVALUE}</opdata>
+                            <priority>WARNING</priority>
+                            <description>Timestamp of iostat data is older than 5m. This indicates a problem with iostat statistics collection. Check cronjob for execution problems.</description>
+                        </trigger>
+                    </triggers>
                 </item>
             </items>
             <discovery_rules>
