@@ -1,78 +1,103 @@
-For editional monitoring functionality of HDD there is usefull unilit iostat.
-It is allows to collect important metrics like:
-- coefficient of disc capacity "utilization"
-- average operations processing time "await"
-- average capacity of queue length of operations to disk deal with "average queue size"
-- other metrics of iostat: rrqm/s, wrqm/s, r/s, w/s, rkB/s, wkB/s, avgrq-sz, r_await, w_await, svctm
+IOstat
+======
 
-This is step by step instrucion of start collect this iostat metric in zabbix monitoring system.
+This template allows monitoring of device input/output statistics and utilization.
 
-1. install iostat utility wich is part of sysstat library
-> \#for CentOS <br>
-> yum install sysstat
+It's based on the iostat utility, which is part of the **sysstat**[1] package.
 
-2. copy file iostat.conf in /etc/zabbix/zabbix_agent.d on server
 
-3. copy file ./scripts/iostat-collect.sh in /usr/libexec/zabbix-extensions/scripts/ on server
+Overview
+========
 
-4. give file iostat-collect.sh permissions to be executable
->> chmod +x iostat-collect.sh
+Use this template to monitor block device items like
 
-5. register crontask to grab summary iostat metrics per minute
->\* \* \* \* \* /usr/libexec/zabbix-extensions/scripts/iostat-collect.sh /tmp/iostat-cron.out 59 >/dev/null 2>&1
+* thoughput in terms of reads/s or writes/s
+* size of the queues
+* device utilization as percentage over time
+* other metrics collected by _iostat_
 
-6. after waiting a minute do test working new cron job by looking in output file
-> tail -f /tmp/iostat-cron.out
 
-7. reboot zabbix agent on server
->service zabbix-agent restart
+Requirements
+------------
 
-8. test working auto discovery zabix item for discovering new hdd partitions on server
-> zabbix_get -s 127.0.0.1 -k iostat.discovery
+* iostat version with support for JSON output (added in sysstat v11.5.1)
+* Zabbix 5.0 LTS or newer
+* crontab support on host
+* proper time set on Zabbix server and host
 
-	example
-	```
-	{
-			"data":[
-					{
-							"{#HARDDISK}":"scd0"},
-					{
-							"{#HARDDISK}":"sdb"},
-					{
-							"{#HARDDISK}":"sdc"},
-					{
-							"{#HARDDISK}":"sda"}]}
-	```
 
-9. test aveilablility collecting iostat metrics on existing hdd partition
-> zabbix_get -s 127.0.0.1 -k iostat.summary[sda]
+Installation
+============
 
-	example
-	```
-	{
-			"rrqm/s":"0.00",
-			"wrqm/s":"0.00",
-			"r/s":"0.04",
-			"w/s":"0.00",
-			"rkB/s":"0.42",
-			"wkB/s":"0.00",
-			"avgrq-sz":"4.09",
-			"avgqu-sz":"19.57",
-			"await":"0.00",
-			"r_await":"2.30",
-			"w_await":"0.00",
-			"svctm":"2.30",
-			"util":"1.78"
-	}
-	```
+1. Have the files of this folder[2] available.
 
-10. register zabbix template iostat-disk-utilization-template.xml, set it for host "Zabbix server"
-(some not important items will be disable for default - you can change it for your own vision)
+2. Install **iostat** (part of sysstat) utility on host.
 
-11. for host "Zabbix server" execute discovery rule "Disks discovery" (instead of whaiting for a new hour)
+       # for CentOS
+       yum install sysstat
 
-12. looking for host "Zabbix server" in group "iostat" - there will be created new discovered and postpocessed items for each HDD partition: utilization, await, average queue size.
+       # for Debian/Ubuntu
+       apt-get install sysstat
 
-13. looking for last data of discovered items in "Last data" tab
+3. Adjust crontab on the host to collect iostat data by adding the line of
+   the enclosed sample `crontab` file.
 
-14. add custom graphic chart on main dashboard of zabbix server health with items like cpu iowait, utilization items for system disc and disc of database (if it is not the same disk).
+   After a minute you should see statistics in a temporary file:
+
+       cat /tmp/iostat-cron.out
+
+4. Copy `iostat.conf` to /etc/zabbix/zabbix_agent.d on host. Restart Zabbix
+   agent to activate the change.
+
+       service zabbix-agent restart
+       # or
+       systemctl restart zabbix-agent.service
+
+5. On Zabbix server confirm that agent knows the newly created keys:
+
+       zabbix_get -s www.example.com -k iostat.discovery
+
+       # in case you configured TLS/PSK, you have to supply the needed properties
+       zabbix_get -s www.example.com  --tls-psk-identity "Zabbix PSK" --tls-psk-file /etc/zabbix/zabbix_agent_pskfile.psk --tls-connect psk -k iostat.discovery
+
+   This should return the results from device discovery and list block devices available on the host.
+
+   Example:
+
+   ```
+   {
+           "data":[
+                   {
+                           "{#HARDDISK}":"md0"},
+                   {
+                           "{#HARDDISK}":"md1"},
+                   {
+                           "{#HARDDISK}":"md2"},
+                   {
+                           "{#HARDDISK}":"nvme0n1"},
+                   {
+                           "{#HARDDISK}":"nvme1n1"}]}
+   ```
+
+
+6. Add the template to Zabbix by importing the file `iostat-disk-utilization-template.xml`.
+
+   Assign the **IOstat** template to the hosts you want to monitor. You can "Execute now"
+   the discovery to have items created immediately on the host.
+
+
+7. Double-check that Zabbix created items for the host and that values are available in "Last data".
+
+8. _Optional_: Adjust the discovery filter to your needs. Enable/Disable items you want to monitor.
+
+9. _Optional_: Add graphs to your dashboard
+
+
+Note:
+This template will monitor the timestamp of incoming data and trigger an alert in case
+the timestamp of the incoming data is off for more than 5 minutes. In this case
+check the execution of the cronjob or for drift in system clock.
+
+
+[1]: https://github.com/sysstat/sysstat
+[2]: https://github.com/lesovsky/zabbix-extensions/tree/master/files/iostat
